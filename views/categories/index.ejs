@@ -1,20 +1,14 @@
 <%- include('../partials/navbar.ejs') %>
-
-                <ul>
-                    <% categories.forEach(function (category) { %>
-                        <li><a href="/categories/<%= category._id %>">
-                                <%= category.name %>
-                            </a>
-                            <a href="/categories/edit/<%= category._id %>">Edit</a>
+    <ul>
+        <% categories.forEach(function (category) { %>
+            <li><a href="/categories/<%= category._id %>">
+                    <%= category.name %>
+                </a>
+                <!-- <a href="/categories/edit/<%= category._id %>">Edit</a>
                             <form action="/categories/delete/<%=category._id %>?_method=DELETE"  method="POST">
                                     <button type="submit">Delete</button>
-                            </form>
-
-                        </li>
-
-                        <% }) %>
-                </ul>
-                <a href="/categories/new">Add new Category</a> <!-- link to add new Category then change it -->
-
-
-                <%- include('../partials/footer.ejs') %>
+                            </form> -->
+            </li>
+            <% }) %>
+    </ul>
+    <%- include('../partials/footer.ejs') %>
