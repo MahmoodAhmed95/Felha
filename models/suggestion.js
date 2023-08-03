@@ -1,0 +1,57 @@
+const mongoose = require("mongoose");
+const Schema = mongoose.Schema;
+
+const suggestionSchema = new Schema({
+  name: {
+    type: String,
+    required: true,
+  },
+  description: {
+    type: String,
+    required: true,
+  },
+  location: {
+    type: String,
+    required: true,
+  },
+  contact: {
+    type: String,
+  },
+  categoryId: {
+    type: Schema.Types.ObjectId,
+    ref: "category",
+    required: true,
+  },
+  cost: {
+    type: String,
+    default: "Not specified",
+  },
+  startDate: {
+    type: Date,
+    default: Date.now(),
+  },
+  endDate: {
+    type: Date,
+    default: Date.now(),
+  },
+  timeDuration: {
+    type: String,
+    default: "Not specified",
+  },
+  user: {
+    type: Schema.Types.ObjectId,
+    ref: "user",
+    required: false,
+  },
+  status: {
+    type: Boolean,
+    default: false,
+  },
+  profile_img: String,
+  cloudinary_id: String,
+},
+{
+  timestamps: true,
+});
+
+module.exports = mongoose.model("Suggestion", suggestionSchema);

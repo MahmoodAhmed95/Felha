@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <!-- Create new Event -->
+    <form action="/events/createEvent" method="POST" enctype="multipart/form-data">
+
+        <% console.log(categories) %>
+
+            <div class="step-form">
+                <div class="mb-3">
+                    <label for="newEveName" class="form-label">Event Name</label>
+                    <input type="text" name="name" class="form-control" id="newEveName"
+                        placeholder="e.g.: Malkiya Beach">
+                </div>
+                <div class="form-floating mb-3">
+                    <textarea name="description" class="form-control" id="newEveDesc"></textarea>
+                    <label for="newEveDesc">Event Description</label>
+                </div>
+                <div class="mb-3">
+                    <label for="addEveChooseCate" class="form-label">Choose Category</label>
+                    <select name="categoryId" id="">
+                        <% categories.forEach(function (category) { %>
+                            <option value="<%= category._id %>">
+                                <%= category.name %>
+                            </option>
+                            <% }); %>
+                    </select>
+                </div>
+            </div>
+            <div class="mb-3">
+                <label for="addEveChooseCity" class="form-label">Choose City</label>
+                <select name="cityId" id="">
+                    <% cities.forEach(function (city) { %>
+                        <option value="<%= city._id %>">
+                            <%= city.name %>
+                        </option>
+                        <% }); %>
+                </select>
+            </div>
+            <div class="step-form">
+                <div class="mb-3">
+                    <label for="newEveLocation" class="form-label">Event Location</label>
+                    <input type="text" name="location" class="form-control" id="newEveLocation"
+                        placeholder="Google Map Link Only">
+                </div>
+                <div class="mb-3">
+                    <label for="newEvePic" class="form-label">Event Picture</label>
+                    <input type="file" name="image" class="form-control" id="newEvePic">
+                </div>
+                <div class="mb-3">
+                    <label for="newEveCost" class="form-label">Event Cost <span>(Optional)</span></label>
+                    <input type="text" name="cost" class="form-control" id="newEveCost" placeholder="e.g.: Free">
+                </div>
+            </div>
+            <div class="step-form">
+                <div class="mb-3">
+                    <label for="newEveStartDt" class="form-label">Event Start Date <span>(Optional)</span></label>
+                    <input type="date" name="startDate" class="form-control" id="newEveStartDt">
+                </div>
+                <div class="mb-3">
+                    <label for="newEveEndDt" class="form-label">Event End Date <span>(Optional)</span></label>
+                    <input type="date" name="endDate" class="form-control" id="newEveEndDt">
+                </div>
+                <div class="mb-3">
+                    <label for="newEveTime" class="form-label">Event Time Duration <span>(Optional - Duration in
+                            hours)</span></label>
+                    <input type="number" name="timeDuration" class="form-control" id="newEveTime"
+                        placeholder="min: 0.5, max: 24" min="0.5" max="24">
+                </div>
+            </div>
+            <div class="step-form">
+                <div class="mb-3">
+                    <label for="newEveContact" class="form-label">Event Contact <span>(Optional)</span></label>
+                    <input type="text" name="contact" class="form-control" id="newEveContact"
+                        placeholder="+973 XXXXXXXX">
+                </div>
+            </div>
+            <div>
+                <a href="/events">Cancel</a>
+                <button type="submit">Add New Event</button>
+            </div>
+    </form>
+</body>
+
+</html>

@@ -1,0 +1,45 @@
+<%- include('../partials/navbar.ejs') %>
+
+
+    <div class="container">
+        <div class="categories">
+            <div class="title">
+                <h1 class="titleOne">Checkout all of the Events in Bahrain!</h1>
+            </div>
+            <div class="classfications">
+                <ul>
+                    <li><button class="btn btn-secondary"><a href="#" class="selected">All</a></button></li>
+                    <li><button class="btn btn-secondary"><a href="#">Fashoin</a></button></li>
+                    <li><button class="btn btn-secondary"><a href="#">Education</a></button></li>
+                    <li><button class="btn btn-secondary"><a href="#">Food & Drink</a></button></li>
+                </ul>
+            </div>
+        </div>
+
+
+<div class="events" >
+
+                    <% events.forEach(function(eve) { %>
+                            <a href="/events/<%= eve._id %>" style="background-image:url(<%=eve.profile_img%>);" class="eventTitle" >
+                            <div class="event" >
+                            <div class="content" >
+                                <span class="stars">★★★★★</span>
+                    
+                               <h2><%= eve.name %></h2> 
+                            
+                             </div></div></a>
+                            <!-- <a href="/events/edit/<%= eve._id %>">Edit</a>
+                            <form action="/events/delete/<%=eve._id %>?_method=DELETE"  method="POST">
+                                <button type="submit">Delete</button>
+                        </form>    THIS SHOULD BE IN THE ADMIN CONTROLLER     -->
+                        <% }); %>
+
+            </div>            
+
+        </div>
+    </div>
+
+
+    <!-- <a href="/events/new">Add new Event</a> THIS SHOULD BE IN THE ADMIN CONTROLLER link to add new event then change it -->
+
+    <%- include('../partials/footer.ejs') %>

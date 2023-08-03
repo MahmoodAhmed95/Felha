@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>
+        <%= title %>
+    </title>
+    <link rel='stylesheet' href='/stylesheets/style.css' />
+</head>
+
+<body>
+    <a href="/">Home</a>
+    <a href="/categories">Categories</a>
+    <a href="/events">Events</a>
+    <a href="/suggestions">Suggest</a>
+    <a href="/admins">Admin</a>
+    <a href="/abouts">About Us</a>
+    <% if (user) { %>
+        <a href="/logout">LOG OUT</a>
+        <% } else { %>
+            <a href="/auth/google" class="login">LOG IN&nbsp;<img src="https://i.imgur.com/FHjYyi0.png"></a>
+            <% } %>
+
+                <h1>
+                    <%= title %>
+                </h1>
+                <p>Welcome to <%= title %>
+                </p>
+                <a href="admins/categories">Go to Categories</a>
+                <a href="admins/events">Go to Events</a>
+
+</body>
+
+</html>

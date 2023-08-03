@@ -1,0 +1,427 @@
+
+@import url('https://fonts.googleapis.com/css2?family=Signika:wght@300;400&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Roboto&display=swap');
+
+html body{
+  margin:0;
+  padding:0;
+  }
+
+nav{
+margin:15px;
+}
+
+body{
+    color:black;
+    font-family: 'Signika', sans-serif;
+}
+
+#smallLogo{
+  width:55px;
+}
+
+ul#header {
+  list-style-type: none;
+  padding: 10px;
+  overflow: hidden;
+  background-color: #FFA500;
+  border-radius: 15px;
+}
+
+li.navBar {
+  float: left;
+}
+
+
+li.navBar a {
+  display: block;
+  color: black;
+  text-align: center;
+  padding: 20px 16px;
+  text-decoration: none;
+  font-size:20px;
+  transition: color 0.3s ease-in-out;
+
+}
+
+li.navBar a:hover:not(.active) {
+    color:white;
+}
+
+.login img {
+  width: 17px;
+}
+
+/* .login {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 34px;
+} */
+
+/* For google maps*/
+iframe {
+  width: 100% !important;
+  height: 450px !important;
+}
+
+/* Footer CSS */
+.footerContainer{
+  padding:50px 0px;
+  background-color: #FFF8EE;
+}
+
+a.sitemap{
+display: block;
+color:black;
+text-decoration: none;
+}
+
+.threeRows h1{
+font-size:30px;
+}
+
+.threeRows{
+  background-color: #FFF8EE;
+  padding:3%;
+  margin: 0 auto;
+  border-radius: 20px;
+  text-align: left;
+  width:80%;
+}
+
+.grid .g-col-4.footerChild{
+  margin:auto;
+}
+
+.grid .g-col-4.footerChild a{
+color:black;
+transition: color 0.3s ease-in-out;
+}
+
+.grid .g-col-4.footerChild a:hover{
+  color:#FFA500;
+  }
+
+  .titleOne{
+    font-size:50px;
+    text-align: center;
+    margin-top:5%;
+}
+
+#city{
+    width:20%;
+    height:40px;
+    border:1px solid #FFA500;
+    border-radius: 5px;
+    text-align: center;
+    margin: 3% auto;
+    display: block;
+    font-family: 'Signika', sans-serif;
+    font-size:20px;
+
+}
+
+#aboveTheFold{
+  margin: 0 10px;
+  margin-bottom:5%;
+}
+
+
+img.placeImg{
+    width:100%;
+    border-radius: 10px;
+}
+
+.activitiesChild{
+    text-align: center;
+    border:1px solid #FFA500;
+    border-radius: 14px;
+    height:100%;
+
+}
+
+.activitiesChild h3{
+    font-weight: 100;
+    text-align: center;
+}
+
+
+#activityTitle{
+  margin-bottom:5%;
+  }
+  
+  #activitySection{
+     margin-bottom:7%;
+  }
+  
+
+img.placeImg{
+  width:100%;
+  border-radius: 10px;
+}
+
+.activitiesChild{
+  text-align: center;
+  border:1px solid #FFA500;
+  border-radius: 14px;
+  height:100%;
+
+}
+
+.activitiesChild h3{
+  font-weight: 100;
+  text-align: center;
+}
+
+
+.btn-primary{
+  background-color: #FFA500;
+  border:1px solid #db8f01;
+  color:black;
+
+  --bs-btn-active-color: #fff;
+  --bs-btn-active-bg: #db8f01;
+  --bs-btn-active-border: 1px solid orange;
+
+}
+
+.btn-primary:hover{
+  background-color: #ffc251;
+  border:1px solid #db8f01 ;
+}
+
+.btn-primary:active{
+  background-color: red;
+}
+
+#aboutFelha{
+  background-color: #FFA500;
+  padding:80px;
+  margin:0 1%;
+  border-radius: 25px;
+  margin-bottom:2%;
+  }
+
+  .gridGap{
+    margin:6% 0px;
+}
+
+.storyText{
+  text-align: justify;
+  font-size:20px;
+}
+
+h2.storyText{
+  font-size:40px;
+}
+
+.storyAbout{
+margin:auto 3%;
+}
+
+.membersContainer{
+  background-color: #FFF8EE;
+  margin-bottom:5%;
+}
+
+.members{
+  text-align:center ;
+  }
+
+  .quote{
+    background-color: orange;
+    color:black;
+    margin:0 1%;
+border-radius: 15px;
+}
+
+
+.quote h3{
+    text-align:center ;
+    font-style: italic;
+    margin-bottom:4%;
+}
+
+.bi{
+  margin:0px 5px;
+}
+
+.btn-secondary{
+  background-color: #FFF8EE;
+  color:black;
+  text-decoration: none;
+  width:max-content;
+}
+
+.classfications ul {
+list-style-type: none;
+}
+
+.classfications ul a{
+  text-decoration: none;
+  color:black;
+}
+
+.classfications {
+  text-align: center;
+  margin: 0 0 4% 0;
+
+}
+
+.classfications ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.classfications li {
+  display: inline-block;
+  margin: 0 0.3%;
+}
+
+
+main .container .categories {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+main .container .categories .title {
+  margin: 15px 0;
+}
+
+main .container .categories .classfications ul {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 10px;
+  margin: 30px 0;
+}
+main .container .categories .classfications ul li {
+  padding: 3px 10px;
+}
+main .container .categories .classfications ul li:not(:first-of-type) {
+  position: relative;
+}
+
+ .container .categories .classfications ul li a {
+  color: gray;
+  font-weight: 600;
+  text-decoration: none;
+  transition: color 0.3s;
+  -webkit-transition: color 0.3s;
+  -moz-transition: color 0.3s;
+  -ms-transition: color 0.3s;
+  -o-transition: color 0.3s;
+}
+ .container .categories .classfications ul li a.selected {
+  color: black;
+}
+ .container .categories .classfications ul li:hover a {
+  color: black;
+}
+ .container .events {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 30px;
+  margin-bottom:3%;
+  
+}
+ .container .events .event {
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+  height: 300px;
+  position: relative;
+  box-shadow: 0 12px 20px 0 rgb(0 0 0 / 13%), 0 2px 4px 0 rgb(0 0 0 / 12%);
+  overflow: hidden;
+  border-radius: 20px;
+  /* -webkit-border-radius: 20px;
+  -moz-border-radius: 20px;
+  -ms-border-radius: 20px;
+  -o-border-radius: 20px; */
+  background: linear-gradient(0deg, rgba(0,0,0,1) 0%, rgba(0,0,0,0.5) 50%, rgba(0,0,0,0) 100%);
+
+}
+ .container .events .event::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  /* background-color: rgba(0, 0, 0, 0.3) ; */
+}
+ .container .events .event .content {
+  height: 100%;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-end;
+  padding: 10px;
+}
+ .container .events .event .content .stars{
+  color: gold;
+  font-size: 20px;
+  position: absolute;
+  top: 10px;
+  right: 10px;
+}
+ .container .events .event .content a{
+  color: white;
+  font-weight: bold;
+  position: relative;
+  margin-bottom: 30px;
+  text-decoration: none;
+  font-size:20px;
+}
+ .container .events .event .content .time {
+  color: white;
+  position: relative;
+  margin-bottom: 30px;
+}
+
+#suggestionForm{
+  margin:0 15%;
+}
+
+.eventTitle{
+  color:white;
+  text-decoration: none;
+  display: relative;
+  background-position: center;
+  background-size:cover;
+  border-radius:20px; 
+  background-repeat: no-repeat; }
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

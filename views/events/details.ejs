@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <title>
+    <%= title %>
+  </title>
+  <link rel='stylesheet' href='/stylesheets/style.css' />
+</head>
+
+<body>
+  <a href="/">Home</a>
+  <a href="/categories">Categories</a>
+  <a href="/events">Events</a>
+  <a href="/suggestions">Suggest</a>
+  <a href="/admins">Admin</a>
+  <a href="/abouts">About Us</a>
+  <% if (user) { %>
+    <a href="/logout">LOG OUT</a>
+    <% } else { %>
+      <a href="/auth/google" class="login">LOG IN&nbsp;<img src="https://i.imgur.com/FHjYyi0.png"></a>
+      <% } %>
+
+        <h1>
+          <%= title %>
+        </h1>
+        <ul>
+          <li>
+            <%=`Event Name: ${event.name}`%>
+          </li>
+          <li>
+            <%=`Event Description: ${event.description}`%>
+          </li>
+          <li>
+            <%-`Event Location: ${event.location}`%>
+          </li>
+          <li>
+            <img src="<%= event.profile_img %>" alt="No">
+          </li>
+          <li>
+            <%=`Event Contact: ${event.contact}`%>
+          </li>
+          <li>
+            <%=`Event Cost: ${event.cost}`%>
+          </li>
+          <li>
+            <%=`Event Start Date: ${event.startDate}`%>
+          </li>
+          <li>
+            <%=`Event End Date: ${event.endDate}`%>
+          </li>
+          <li>
+            <%=`Event Duration: ${event.timeDuration}`%>
+          </li>
+        </ul>
+        </section>
+        <!-- new markup below -->
+        <br><br>
+        <h2>Reviews</h2>
+        <% if (user) { %>
+          <form id="add-review-form" method="POST" action="/events/<%= event._id %>/reviews">
+            <label>Review:</label>
+            <textarea name="content"></textarea>
+            <label>Rating:</label>
+            <select name="rating">
+              <option value="1">1</option>
+              <option value="2">2</option>
+              <option value="3">3</option>
+              <option value="4">4</option>
+              <option value="5">5</option>
+            </select>
+            <input type="submit" value="Add Review">
+          </form>
+          <!-- Add the line below -->
+          <% } %>
+
+            <table>
+              <thead>
+                <tr>
+                  <th>User</th>
+                  <th>Date</th>
+                  <th>Review</th>
+                  <th>Rating</th>
+                </tr>
+              </thead>
+              <tbody>
+                <% let total=0 %>
+                  <% event.reviews.forEach(function(r) { %>
+                    <% total +=r.rating %>
+                      <tr>
+                        <td class="review-user"><img alt="avatar" src="<%= r.userAvatar %>"
+                            referrerpolicy="no-referrer">
+                          <%= r.userName %>
+                        </td>
+                        <td>
+                          <%= r.createdAt.toLocaleDateString() %>
+                        </td>
+                        <td>
+                          <%= r.content %>
+                        </td>
+                        <td>
+                          <%= r.rating%>
+                        </td>
+                      </tr>
+                      <% }); %>
+                        <tr>
+                          <td colspan="3"></td>
+                          <td><strong>
+                              <%= (total / event.reviews.length).toFixed(1)=="NaN" ? "" :(total /
+                                event.reviews.length).toFixed(1) %>
+                            </strong></td>
+                        </tr>
+              </tbody>
+            </table>
+
+
+
+
+
+
+</body>
+
+</html>
