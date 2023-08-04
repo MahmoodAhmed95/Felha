@@ -1,34 +1,52 @@
-<!DOCTYPE html>
-<html>
-
-<head>
-    <title>
-        <%= title %>
-    </title>
-    <link rel='stylesheet' href='/stylesheets/style.css' />
-</head>
-
-<body>
-    <a href="/">Home</a>
-    <a href="/categories">Categories</a>
-    <a href="/events">Events</a>
-    <a href="/suggestions">Suggest</a>
-    <a href="/admins">Admin</a>
-    <a href="/abouts">About Us</a>
-    <% if (user) { %>
-        <a href="/logout">LOG OUT</a>
-        <% } else { %>
-            <a href="/auth/google" class="login">LOG IN&nbsp;<img src="https://i.imgur.com/FHjYyi0.png"></a>
-            <% } %>
-
-                <h1>
-                    <%= title %>
-                </h1>
-                <p>Welcome to <%= title %>
-                </p>
-                <a href="admins/categories">Go to Categories</a>
-                <a href="admins/events">Go to Events</a>
-
-</body>
-
-</html>
+<% if(user){ %>
+    <%- include('../partials/adminPartials/header.ejs') %>
+<main>
+    <div class="container fl-container">
+        <div class="profile">
+            <div class="image">
+                <img src="<%= user.avatar %>" alt="Profile Picture">
+            </div>
+            <span> ... <% user.name %></span>
+            <div class="greeting">
+                <h2><strong style="color: #FFA500;">Helloooo</strong> <%= user.name %></h2>
+                <p>Real programmers don't <strong>comment</strong> their code. If it was hard to write, it should be hard to understand</p>
+                <span>Tom Van Vleck</span>
+            </div>
+        </div>
+        <div class="statistics">
+            <div class="st-block">
+                <div class="nm-icon">
+                    <span>Users</span>
+                    <i class="bi bi-people-fill"></i>
+                </div>
+                <span>10</span>
+            </div>
+            <div class="st-block">
+                <div class="nm-icon">
+                    <span>Categroies</span>
+                    <i class="bi bi-diagram-3-fill"></i>
+                </div>
+                <span>9</span>
+            </div>
+            <div class="st-block">
+                <div class="nm-icon">
+                    <span>Events</span>
+                    <i class="bi bi-calendar-week-fill"></i>
+                </div>
+                <span>100</span>
+            </div>
+            <div class="st-block">
+                <div class="nm-icon">
+                    <span>Reviews</span>
+                    <i class="bi bi-chat-left-fill"></i>
+                </div>
+                <span>2000</span>
+            </div>
+        </div>
+    </div>
+</main>
+<%- include('../partials/adminPartials/footer.ejs') %>
+<% } else { %>
+    <h1 style="color: red;font-weight: bold;text-align: center;">سوو لوقن أول دبحتونا</h1>
+    <h2 style="color: black;font-weight: bold;text-align: center;"><a href="/auth/google" class="login">عصو هني</a></h1>
+<% }  %>

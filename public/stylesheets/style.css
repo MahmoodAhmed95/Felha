@@ -396,6 +396,10 @@ main .container .categories .classfications ul li:not(:first-of-type) {
   border-radius:20px; 
   background-repeat: no-repeat; }
 
+  .eapps-instagram-feed-posts-view{
+    justify-content: center !important;
+  }
+
 
 
 

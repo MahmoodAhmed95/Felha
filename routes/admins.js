@@ -1,58 +1,77 @@
 var express = require("express");
 var router = express.Router();
+const upload = require("../utils/multer");
 
 const adminsCtrl = require("../controllers/admins");
 
-/* GET home page. */
-router.get("/", adminsCtrl.index);
+// =========================================================================================
+// =========================================================================================
 
-/*
+// Start "Dashboard" Routes
 
-Categories edit and create routes
+    // Get "Dashboard" Page
+    router.get("/", adminsCtrl.index);
 
-*/
+// End "Dashboard" Routes
 
-//New Category Route to display the form
-router.get("/categories", adminsCtrl.categoryForm);
+// =========================================================================================
+// =========================================================================================
 
+// Start "Categories" Routes
 
-router.get("/categories/ajaxUpdate/:id", adminsCtrl.editCategoryAjax);
+    // Get "Categories Control" Page
+    router.get("/categories", adminsCtrl.categoryForm);
 
-router.get("/categories/ajaxDelete/:id", adminsCtrl.deleteCategoryAjax);
+    router.get("/categories/ajaxUpdate/:id", adminsCtrl.editCategoryAjax);
 
-//Creating category Route
-router.post("/categories", adminsCtrl.createCategory);
+    router.get("/categories/ajaxDelete/:id", adminsCtrl.deleteCategoryAjax);
 
-//Updating the category data -> database
-router.put("/categories/update/:id", adminsCtrl.updateCategoryForm);
+    //Creating category Route
+    router.post("/categories", adminsCtrl.createCategory);
 
-//deleting the category
-router.delete("/categories/delete/:id", adminsCtrl.deleteCategory);
+    //Updating the category data -> database
+    router.put("/categories/update/:id", adminsCtrl.updateCategoryForm);
 
-//New Category Route to display the form
-router.get("/categories/:id", adminsCtrl.showCategroyEvents);
-/*
+    //deleting the category
+    router.delete("/categories/delete/:id", adminsCtrl.deleteCategory);
 
-Events edit and create routes
+    //New Category Route to display the form
+    // router.get("/categories/:id", adminsCtrl.showCategroyEvents);
 
-*/
+// End of "Categories" Routes
 
-//New Event Route to display the form
-router.get("/events", adminsCtrl.eventForm);
+// =========================================================================================
+// =========================================================================================
 
-//Creating event Route
-router.post("/events", adminsCtrl.createEvent);
-//Editting the event data -> form
-router.get("/events/edit/:id", adminsCtrl.editEventForm);
+// Start "Events" Routes
 
-//Updating  event data -> database
-router.put("/events/update/:id", adminsCtrl.updateEventForm);
-// // reviews add for the reviews section
-// router.post("/:id/reviews", adminsCtrl.create);
+    //New Event Route to display the form
+    router.get("/events", adminsCtrl.indexEvents);
 
-//Creating event Route
-router.get("/events/:id", adminsCtrl.showOne);
+    //Creating event Route
+    router.post("/events",upload.single("image"), adminsCtrl.createEvent);
 
-//deleting the event
-router.delete("/events/delete/:id", adminsCtrl.deleteEvent);
+    router.get("/events/ajaxSuggest/:id", adminsCtrl.eventSuggestAjax);
+
+    router.get("/events/ajaxEvent/:id", adminsCtrl.eventAjax);
+
+    //Editting the event data -> form
+    router.get("/events/edit/:id", adminsCtrl.editEventForm);
+
+    //Updating  event data -> database
+    router.put("/events/update/:id", adminsCtrl.updateEventForm);
+    // // reviews add for the reviews section
+    // router.post("/:id/reviews", adminsCtrl.create);
+
+    //Creating event Route
+    router.get("/events/:id", adminsCtrl.showOne);
+
+    //deleting the event
+    router.delete("/events/delete/:id", adminsCtrl.deleteEvent);
+
+// End of "Events" Routes
+
+// =========================================================================================
+// =========================================================================================
+
 module.exports = router;

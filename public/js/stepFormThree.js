@@ -1,54 +1,54 @@
 // step form
-let currentStepTwo = 0; // Current tab is set to be the first tab (0)
-let stepsFormTwo = document.getElementsByClassName("step-form-two");
-// let theFormTwo = document.getElementsByTagName('form')[1];
+let currentStepThree = 0; // Current tab is set to be the first tab (0)
+let stepsFormThree = document.getElementsByClassName("step-form-three");
+// let theFormThree = document.getElementsByTagName('form')[2];
 
-showStepTwo(currentStepTwo); // Display the current tab
+showStepThree(currentStepThree); // Display the current tab
 
 // This function will display the specified tab of the form
-function showStepTwo(stepNumber) {
-    stepsFormTwo[stepNumber].style.display = "block";
+function showStepThree(stepNumber) {
+    stepsFormThree[stepNumber].style.display = "block";
     // fix the Previous/Next buttons:
 
     if (stepNumber == 0) {
-        document.getElementById("prevBtnTwo").style.display = "none";
+        document.getElementById("prevBtnThree").style.display = "none";
     } else {
-        document.getElementById("prevBtnTwo").style.display = "inline";
+        document.getElementById("prevBtnThree").style.display = "inline";
     }
-    if (stepNumber == (stepsFormTwo.length - 1)) {
-        document.getElementById("nextBtnTwo").innerHTML = "Submit";
+    if (stepNumber == (stepsFormThree.length - 1)) {
+        document.getElementById("nextBtnThree").innerHTML = "Submit";
     } else {
-        document.getElementById("nextBtnTwo").innerHTML = "Next";
+        document.getElementById("nextBtnThree").innerHTML = "Next";
     }
     // run a function that will display the correct step indicator:
-    fixStepIndicatorTwo(stepNumber);
+    fixStepIndicatorThree(stepNumber);
 }
 
 // This function will figure out which tab to display
-function nextPrevTwo(step) {
+function nextPrevThree(step) {
     // Exit the function if any field in the current tab is invalid:
-    if (step == 1 && !validateFormTwo()){
+    if (step == 1 && !validateFormThree()){
         return false;
     }
     // Hide the current tab:
-    stepsFormTwo[currentStepTwo].style.display = "none";
+    stepsFormThree[currentStepThree].style.display = "none";
     // Increase or decrease the current tab by 1:
-    currentStepTwo = currentStepTwo + step;
+    currentStepThree = currentStepThree + step;
     // if you have reached the end of the form
-    if (currentStepTwo >= stepsFormTwo.length) {
+    if (currentStepThree >= stepsFormThree.length) {
         // the form gets submitted:
-        theFormTwo.submit();
+        theFormThree.submit();
         return false;
     }
-    removeInvalidTwo();
+    removeInvalidThree();
     // Otherwise, display the correct tab:
-    showStepTwo(currentStepTwo);
+    showStepThree(currentStepThree);
 }
 
 // This function deals with validation of the form fields
-function validateFormTwo() {
+function validateFormThree() {
     let valid = true;
-    let inputs = stepsFormTwo[currentStepTwo].getElementsByTagName("input");
+    let inputs = stepsFormThree[currentStepThree].getElementsByTagName("input");
     // A loop that checks every input field in the current tab:
     //!---------------------------------------------------
     // for (let i = 0; i < inputs.length; i++) {
@@ -62,20 +62,20 @@ function validateFormTwo() {
     // }
     // If the valid status is true, mark the step as finished and valid
     if (valid) {
-        document.getElementsByClassName("step-dots-two")[currentStepTwo].className += " finish";
+        document.getElementsByClassName("step-dots-three")[currentStepThree].className += " finish";
     }
   return valid; // return the valid status
 }
-function removeInvalidTwo(){
-    let inputs = stepsFormTwo[currentStepTwo].getElementsByTagName("input");
+function removeInvalidThree(){
+    let inputs = stepsFormThree[currentStepThree].getElementsByTagName("input");
     for (let i = 0; i < inputs.length; i++) {
         // remove "invalid" if valid
         inputs[i].className = inputs[i].className.replace(" invalid", "");
     }
 }
 // This function removes the "active" class of all steps
-function fixStepIndicatorTwo(theStep) {
-    let stepDot = document.getElementsByClassName("step-dots-two");
+function fixStepIndicatorThree(theStep) {
+    let stepDot = document.getElementsByClassName("step-dots-three");
     for (let i = 0; i < stepDot.length; i++) {
         stepDot[i].className = stepDot[i].className.replace(" active", "");
     }

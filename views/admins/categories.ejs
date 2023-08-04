@@ -1,3 +1,4 @@
+<% if(user){ %>
 <%- include('../partials/adminPartials/header.ejs') %>
 <main>
     <div class="tabs custom-tabs">
@@ -30,7 +31,6 @@
                     </div>
                 </form>
             </div>
-            <% console.log(category) %>
             <div class="tab-pane fade update-cate" id="update-cate-cont" role="tabpanel" aria-labelledby="update-cate-tab" tabindex="0">
                 <form class="step-form-holder" id="updateCateForm" action="/admins/categories/update/<%= category[0]._id  %>?_method=PUT" method="POST">
                     <h1 class="step-form-header">Update Categroy</h1>
@@ -57,7 +57,7 @@
                 </form>
             </div>
             <div class="tab-pane fade delete-cate" id="delete-cate-cont" role="tabpanel" aria-labelledby="delete-cate-tab" tabindex="0">
-                <form class="step-form-holder" id="deleteCateForm" action="/categories/delete/<%=category[0]._id %>?_method=DELETE" method="POST">
+                <form class="step-form-holder" id="deleteCateForm" action="/admins/categories/delete/<%=category[0]._id %>?_method=DELETE" method="POST">
                     <h1 class="step-form-header">Delete Categroy</h1>
                     <div class="step-form-showed">
                         <label for="delCateChoose" class="form-label">Choose Category</label>
@@ -88,7 +88,6 @@
                 dataType: 'json', // specify data type
                 type: 'GET',
                 success: function(data) {
-                    console.log(data);
                     updateCateForm.setAttribute('action', `/admins/categories/update/${data._id}?_method=PUT`);
                     updateCateForm.setAttribute('method', `POST`);
                     uptCateName.setAttribute('value', `${data.name}`);
@@ -104,8 +103,8 @@
                 dataType: 'json', // specify data type
                 type: 'GET',
                 success: function(data2) {
-                    console.log(data2);
-                    deleteCateForm.setAttribute('action', `/categories/delete/${data2._id}?_method=DELETE`);
+                    // console.log(data2);
+                    deleteCateForm.setAttribute('action', `/admins/categories/delete/${data2._id}?_method=DELETE`);
                     deleteCateForm.setAttribute('method', `POST`);
                 },
                 error: function() {
@@ -116,3 +115,7 @@
     });
 </script>
 <%- include('../partials/adminPartials/footer.ejs') %>
+<% } else { %>
+    <h1 style="color: red;font-weight: bold;text-align: center;">سوو لوقن أول دبحتونا</h1>
+    <h2 style="color: black;font-weight: bold;text-align: center;"><a href="/auth/google" class="login">عصو هني</a></h1>
+<% }  %>
