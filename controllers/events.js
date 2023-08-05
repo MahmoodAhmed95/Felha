@@ -15,15 +15,24 @@ module.exports = {
 
 async function index(req, res) {
   const events = await Event.find({});
-  res.render("events/index", { title: "Events", events });
+  // const event = new Event();
+  const categories = await Category.find({});
+  const cities = await City.find({});
+  console.log(categories);
+  res.render("events/index", { title: "Events", events, cities, categories });
 }
 
 async function index(req, res) {
   try {
+    const categories = await Category.find({});
+    const cities = await City.find({});
+    console.log(categories);
     const events = await Event.find({});
     res.render("events/index", {
       title: "event",
       events: events,
+      cities: cities,
+      categories: categories,
     });
   } catch (error) {
     res.render("error");
@@ -43,8 +52,14 @@ async function create(req, res) {
     const result = await cloudinary.uploader.upload(req.file.path);
     req.body.profile_img = result.secure_url;
     req.body.cloudinary_id = result.public_id;
-    await Event.create(req.body);
-    res.redirect("/events/");
+    const event = await Event.findOne({ name: req.body.name });
+    console.log(event);
+    if (event) {
+      console.log("Name already exist");
+    } else {
+      await Event.create(req.body);
+      res.redirect("/events/");
+    }
   } catch (error) {
     console.log(error);
     res.render("error", { errorMsg: error.message });

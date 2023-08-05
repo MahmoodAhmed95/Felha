@@ -63,6 +63,16 @@
                 <div class="mb-3">
 
                     <label for="newEveStartDt" class="form-label">Event Start Date <span>(Optional)</span></label>
+<<<<<<< HEAD
+                    <input type="date" name="startDate" class="form-control" id="newEveStartDt" value="<%= event.startDate %>">
+                    <%=console.log( event.startDate.getFullYear()+ -0+ event.startDate.getMonth()+ - +event.startDate.getDate() )%>
+                </div>
+                <div class="mb-3">
+                    <label for="newEveEndDt" class="form-label">Event End Date <span>(Optional)</span></label>
+                    <input type="date" name="endDate" class="form-control" id="newEveEndDt" value="<%= event.endDate %>">
+                    <% console.log(event.endDate.getDate() + "-" + event.endDate.getMonth() +"-"+ event.endDate.getFullYear() ); %>
+                    <%= console.log(event.endDate.getFullYear()+"-0"+ event.endDate.getMonth()+"-"+event.endDate.getDate() )%>
+=======
                     <input type="date" name="startDate" class="form-control" id="newEveStartDt"
                         value="<%= event.startDate%>">
 
@@ -71,6 +81,7 @@
                     <label for="newEveEndDt" class="form-label">Event End Date <span>(Optional)</span></label>
                     <input type="date" name="endDate" class="form-control" id="newEveEndDt"
                         value="<%= event.endDate %>">
+>>>>>>> a7c0eb336ead0b18e3c8151106d98b071efd9515
 
                 </div>
                 <div class="mb-3">

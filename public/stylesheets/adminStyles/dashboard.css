@@ -1,3 +1,8 @@
+body{
+    font-family: 'Signika', sans-serif  !important;  
+}
+
+
 /* Start main Styling */
 main .fl-container {
     display: flex;
@@ -87,6 +92,20 @@ main .fl-container .statistics .st-block .nm-icon span {
 
 }
 main .fl-container .statistics .st-block span {
+
+
+}
+
+
+.adminBasicContainer{
+    width:80%;
+    background-color: #FFF8EE;
+    box-shadow: 0 12px 20px 0 rgb(0 0 0 / 13%), 0 2px 4px 0 rgb(0 0 0 / 12%);
+    display: block;
+    margin:0 auto;
+    height:80%;
+    border-radius: 15px;
+    color:black;
 
 }
 /* End Of main Styling */

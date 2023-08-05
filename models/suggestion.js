@@ -41,7 +41,7 @@ const suggestionSchema = new Schema({
   user: {
     type: Schema.Types.ObjectId,
     ref: "user",
-    required: false,
+    required: true,
   },
   cityId: {
     type: Schema.Types.String,

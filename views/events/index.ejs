@@ -8,35 +8,43 @@
             </div>
             <div class="classfications">
                 <ul>
-                    <li><button class="btn btn-secondary"><a href="#" class="selected">All</a></button></li>
-                    <li><button class="btn btn-secondary"><a href="#">Fashoin</a></button></li>
-                    <li><button class="btn btn-secondary"><a href="#">Education</a></button></li>
-                    <li><button class="btn btn-secondary"><a href="#">Food & Drink</a></button></li>
+                    <li><button class="btn btn-secondary"><a href="/events" class="selected">All</a></button></li>
+                    <% categories.forEach(function (category) { %>
+                        <li><button class="btn btn-secondary"><a href="/categories/<%= category._id %>">
+                                    <%= category.name %>
+                                </a></button>
+
+                        </li>
+                        <% }) %>
                 </ul>
             </div>
         </div>
 
 
-<div class="events" >
+        <div class="events">
 
-                    <% events.forEach(function(eve) { %>
-                            <a href="/events/<%= eve._id %>" style="background-image:url(<%=eve.profile_img%>);" class="eventTitle" >
-                            <div class="event" >
-                            <div class="content" >
-                                <span class="stars">★★★★★</span>
-                    
-                               <h2><%= eve.name %></h2> 
-                            
-                             </div></div></a>
-                            <!-- <a href="/events/edit/<%= eve._id %>">Edit</a>
+            <% events.forEach(function(eve) { %>
+                <a href="/events/<%= eve._id %>" style="background-image:url(<%=eve.profile_img%>);" class="eventTitle">
+                    <div class="event">
+                        <div class="content">
+                            <span class="stars">★★★★★</span>
+
+                            <h2>
+                                <%= eve.name %>
+                            </h2>
+
+                        </div>
+                    </div>
+                </a>
+                <!-- <a href="/events/edit/<%= eve._id %>">Edit</a>
                             <form action="/events/delete/<%=eve._id %>?_method=DELETE"  method="POST">
                                 <button type="submit">Delete</button>
                         </form>    THIS SHOULD BE IN THE ADMIN CONTROLLER     -->
-                        <% }); %>
-
-            </div>            
+                <% }); %>
 
         </div>
+
+    </div>
     </div>
 
 

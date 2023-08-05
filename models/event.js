@@ -34,11 +34,6 @@ const eventSchema = new Schema(
       type: String,
       required: true,
     },
-    cityId: {
-      type: Schema.Types.String,
-      ref: "city",
-      required: true,
-    },
     location: {
       type: String,
       required: true,
@@ -49,6 +44,11 @@ const eventSchema = new Schema(
     categoryId: {
       type: Schema.Types.ObjectId,
       ref: "category",
+      required: true,
+    },
+    cityId: {
+      type: Schema.Types.ObjectId,
+      ref: "city",
       required: true,
     },
     cost: {

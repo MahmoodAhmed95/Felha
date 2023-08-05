@@ -6,6 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet">
     <link href="https://getbootstrap.com/docs/5.3/assets/css/docs.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css">
     <link href="/stylesheets/style.css" rel="stylesheet">
     <link rel="icon" href="/images/felha_head.png" type="image/png">
     <title>Felha</title>
@@ -15,13 +16,18 @@
         <body>
         <nav>
         <ul id="header">
-          <li class="navBar"><a href="/"><img src="/images/felha_black.png" id="smallLogo"></a></li>
+          <li class="navBar"><a href="/"><img src="/images/felha_logo_new.png" id="smallLogo"></a></li>
           <li class="navBar"><a href="/">Home</a></li>
           <li class="navBar"><a href="/events">Events</a></li>
           <li class="navBar"><a href="/categories">Categories</a></li>
           <li class="navBar"><a href="/suggestions">Suggest</a></li>
           <li class="navBar"><a href="/abouts">About</a></li>
+          
+          <% if(typeof user !== 'undefined'){ %>
+          <% if(user.role === 2 || user.role === 1){ %>
           <li class="navBar"><a href="/admins">Admin</a></li>
+          <% } %>
+          <% } %>
 
 
 

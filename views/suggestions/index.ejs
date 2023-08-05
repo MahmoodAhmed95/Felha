@@ -70,6 +70,24 @@
 </form>
 <%- include('../partials/footer.ejs') %>
 <% } else { %>
-    <h1 style="color: red;font-weight: bold;text-align: center;">سوو لوقن أول دبحتونا</h1>
-    <h2 style="color: black;font-weight: bold;text-align: center;"><a href="/auth/google" class="login">عصو هني</a></h1>
+
+
+    <%- include('../partials/navbar.ejs') %>
+
+
+
+
+<h1 class="titleOne">Please Login in Order to Suggest an Event</h1>
+
+<div class="signInHolder">
+    <a href="/auth/google">
+      <button type="button" id="signIntoReview" class="btn btn-primary eventAdd">Login to Add Event!</button>
+
+    </a>
+    </div>
+
+    <%- include('../partials/footer.ejs') %>
+
+
+
 <% }  %>

@@ -7,6 +7,8 @@ var logger = require("morgan");
 var methodOverride = require("method-override");
 // save the session id to the current user.
 var session = require("express-session");
+//flash message
+const flash = require('express-flash');
 //
 // passport for the authentication
 var passport = require("passport");
@@ -21,13 +23,10 @@ require("./config/passport");
 
 //
 var indexRouter = require("./routes/index");
-var usersRouter = require("./routes/users");
 var categoriesRouter = require("./routes/categories");
 var eventsRouter = require("./routes/events");
 var suggestionsRouter = require("./routes/suggestions");
 var adminsRouter = require("./routes/admins");
-// var reviewsRouter = require("./routes/reviews");
-
 
 var app = express();
 
@@ -50,6 +49,8 @@ app.use(
     saveUninitialized: true,
   })
 );
+// Configure flash middleware
+app.use(flash());
 //
 app.use(passport.initialize());
 app.use(passport.session());
@@ -61,14 +62,11 @@ app.use(function (req, res, next) {
 });
 //
 app.use("/", indexRouter);
-app.use("/users", usersRouter);
 app.use("/categories", categoriesRouter);
 app.use("/events", eventsRouter);
 app.use("/suggestions", suggestionsRouter);
 app.use("/admins", adminsRouter);
 // app.use("/", reviewsRouter);
-
-
 
 // catch 404 and forward to error handler
 app.use(function (req, res, next) {

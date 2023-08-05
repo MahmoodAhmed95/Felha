@@ -4,6 +4,8 @@ const Schema = mongoose.Schema;
 const userSchema = new Schema(
   {
     name: String,
+    profile_img: String,
+    cloudinary_id: String,
     googleId: {
       type: String,
       required: true,

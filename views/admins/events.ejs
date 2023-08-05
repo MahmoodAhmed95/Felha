@@ -1,6 +1,22 @@
 <% if(user){ %>
     <%- include('../partials/adminPartials/header.ejs') %>
 <main>
+    <% if (successMessages && successMessages.length > 0) { %>
+        <div class="alert alert-success alert-dismissible fade show w-75 mx-5" role="alert">
+            <% for (let message of successMessages) { %>
+                <p><%= message %></p>
+            <% } %>
+            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+        </div>
+    <% } %>
+    <% if (errorMessages && errorMessages.length > 0) { %>
+        <div class="alert alert-danger alert-dismissible fade show w-75 mx-5" role="alert" >
+            <% for (let message of errorMessages) { %>
+                <p><%= message %></p>
+            <% } %>
+            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+        </div>
+    <% } %>
     <div class="tabs custom-tabs">
         <h1 class="tabs-header">Events</h1>
         <div class="tabs-list-holder">
@@ -16,7 +32,7 @@
                 </li>
                 <li class="tab-item" role="presentation">
                     <button class="tab-btn" id="delete-eve-tab" data-bs-toggle="pill" data-bs-target="#delete-eve-cont" type="button" role="tab" aria-controls="delete-eve-tab" aria-selected="false">Delete Event</button>
-                </li>
+                </li> 
             </ul>
         </div>
     </div>
@@ -123,7 +139,7 @@
                     <div class="step-form-two">
                         <div class="mb-3">
                             <label for="addEveChooseSgst" class="form-label">Choose Suggestions</label>
-                            <select name="suggest-name" class="form-select" id="addEveChooseSgst">
+                            <select name="suggestName" class="form-select" id="addEveChooseSgst">
                                 <% let checkSuggestions = false %>
                                 <% suggestions.forEach(function (suggest) { %>
                                     <% if(suggest.status){ %>
@@ -142,22 +158,35 @@
                     <div class="step-form-two">
                         <div class="mb-3">
                             <label for="newEveNameSgst" class="form-label">Event Name</label>
-                            <input type="text" name="name" class="form-control" id="newEveNameSgst" placeholder="Enter Event Name">
+                            <input type="text" name="name" class="form-control" id="newEveNameSgst" placeholder="Enter Event Name" value="<%= suggestions[0].name %>">
                         </div>
                         <div class="form-floating mb-3">
-                            <textarea name="description" class="form-control" id="newEveDescSgst"></textarea>
+                            <textarea name="description" class="form-control" id="newEveDescSgst"><%= suggestions[0].description %></textarea>
                             <label for="newEveDescSgst">Event Description</label>
                         </div>
                     </div>
                     <div class="step-form-two">
-                        <div class="mb-3">
-                            <img alt="Event Image">
-                        </div>
-                        <div class="mb-3">
-                            <input type="hidden" id="oldEvePicSgst">
-                            <input type="hidden" id="oldEvePicSgstCdId">
-                            <label for="newEvePicSgst" class="form-label">Event Image</label>
-                            <input type="file" name="image" class="form-control" id="newEvePicSgst">
+                        <div class="the-choice">
+                            <div class="choice">
+                                <input type="radio" name="imageChangeControl" id="imageChangeControl1" class="radioHidden" value="old" checked>
+                                <label for="imageChangeControl1" class="img-choice-select">
+                                    <div class="img-holder">
+                                        <img src="<%= suggestions[0].profile_img %>" alt="Event Image" id="OldImageToAddSgst">
+                                        <input type="hidden" id="oldEvePicSgstCdId" name="oldImage" value="<%= suggestions[0].cloudinary_id %>">
+                                        <input type="hidden" id="OldImageToAddSgstInp" name="oldImageProfile" value="<%= suggestions[0].profile_img %>">
+                                    </div>
+                                </label>
+                                <h4>Keep The Suggested Image</h4>
+                            </div>
+                            <div class="choice">
+                                <input type="radio" name="imageChangeControl" id="imageChangeControl2" class="radioHidden" value="new">
+                                <label for="imageChangeControl2" class="img-choice-select">
+                                    <div>
+                                        <input type="file" name="image" class="form-control" id="newEvePicSgst">
+                                    </div>
+                                </label>
+                                <h4>Add New Image</h4>
+                            </div>
                         </div>
                     </div>
                     <div class="step-form-two">
@@ -165,9 +194,15 @@
                             <label for="addEveSgstChooseCate" class="form-label">Choose Category</label>
                             <select name="categoryId" class="form-select" id="addEveSgstChooseCate">
                                 <% categories.forEach(function (category) { %>
-                                    <option value="<%= category._id %>">
-                                        <%= category.name %>
-                                    </option>
+                                    <% if(category._id.toString() ==  suggestions[0].categoryId.toString()) { %>
+                                        <option value="<%= category._id %>" selected>
+                                            <%= category.name %>
+                                        </option>
+                                    <% } else { %>
+                                        <option value="<%= category._id %>">
+                                            <%= category.name %>
+                                        </option>
+                                    <% } %>
                                 <% }); %>
                             </select>
                         </div>
@@ -175,15 +210,21 @@
                     <div class="step-form-two">
                         <div class="mb-3">
                             <label for="newEveLocationSgst" class="form-label">Event Location</label>
-                            <input type="text" name="location" class="form-control" id="newEveLocationSgst" placeholder="Google Map Embed Link">
+                            <input type="text" name="location" class="form-control" id="newEveLocationSgst" placeholder="Google Map Embed Link" value="<%= suggestions[0].location %>">
                         </div>
                         <div class="mb-3">
                             <label for="addEveSgstChooseCity" class="form-label">Choose City</label>
                             <select name="cityId" class="form-select" id="addEveSgstChooseCity">
                                 <% cities.forEach(function (city) { %>
-                                    <option value="<%= city._id %>">
-                                        <%= city.name %>
-                                    </option>
+                                    <% if(city._id.toString() ==  suggestions[0].cityId.toString()) { %>
+                                        <option value="<%= city._id %>" selected>
+                                            <%= city.name %>
+                                        </option>
+                                    <% } else { %>
+                                        <option value="<%= city._id %>">
+                                            <%= city.name %>
+                                        </option>
+                                    <% } %>
                                 <% }); %>
                             </select>
                         </div>
@@ -201,16 +242,16 @@
                     <div class="step-form-two">
                         <div class="mb-3">
                             <label for="newEveCostSgst" class="form-label">Event Cost <span>(Optional)</span></label>
-                            <input type="text" name="cost" class="form-control" id="newEveCostSgst" value="">
+                            <input type="text" name="cost" class="form-control" id="newEveCostSgst" value="<%= suggestions[0].cost %>">
                         </div>
                         <div class="mb-3">
                             <label for="newEveTimeSgst" class="form-label">Event Time Duration <span>(Optional - Duration in hours)</span></label>
-                            <input type="text" name="timeDuration" class="form-control" id="newEveTimeSgst" placeholder="Enter Duration of Event in hours">
+                            <input type="text" name="timeDuration" class="form-control" id="newEveTimeSgst" placeholder="Enter Duration of Event in hours" value="<%= suggestions[0].timeDuration %>">
                         </div>
                     </div>
                     <div class="step-form-two">
                         <div class="form-floating mb-3">
-                            <textarea type="text" name="contact" class="form-control" id="newEveContactSgst"></textarea>
+                            <textarea type="text" name="contact" class="form-control" id="newEveContactSgst"><%= suggestions[0].contact %></textarea>
                             <label for="newEveContactSgst">Event Contacts Information<span>(Optional)</span></label>
                         </div>
                     </div>
@@ -227,36 +268,129 @@
                 </form>
             </div>
             <div class="tab-pane fade delete-cate" id="update-eve-cont" role="tabpanel" aria-labelledby="update-eve-tab" tabindex="0">
-                <form class="step-form-holder" id="updateCateForm" action="">
+                <form class="step-form-holder" id="updateEveForm" action="/admins/events/update/<%= events[0]._id %>?_method=PUT" method="POST" enctype="multipart/form-data">
                     <h1 class="step-form-header">Update Event</h1>
                     <div class="step-dots-holder">
                         <span class="step-dots-three">1</span>
                         <span class="step-dots-three">2</span>
                         <span class="step-dots-three">3</span>
+                        <span class="step-dots-three">4</span>
+                        <span class="step-dots-three">5</span>
+                        <span class="step-dots-three">6</span>
+                        <span class="step-dots-three">7</span>
+                        <span class="step-dots-three">8</span>
                     </div>
                     <div class="step-form-three">
-                        <label for="delCateChoose" class="form-label">Choose Category</label>
-                        <select name="name" class="form-select" id="delCateChoose">
-                            <option value="eduId">Education</option>
-                            <option value="sptId">Sport</option>
-                            <option value="campId">Camping</option>
-                        </select>
+                        <div class="mb-3">
+                            <label for="uptEveChoose" class="form-label">Choose Event</label>
+                            <select name="eventChosen" class="form-select" id="uptEveChoose">
+                                <% events.forEach(function (event) { %>
+                                        <option value="<%= event._id %>">
+                                            <%= event.name %>
+                                        </option>
+                                <% }); %>
+                            </select>
+                        </div>
                     </div>
                     <div class="step-form-three">
-                        <label for="delCateChoose" class="form-label">Choose yyy</label>
-                        <select name="name" class="form-select" id="delCateChoose">
-                            <option value="eduId">Education</option>
-                            <option value="sptId">Sport</option>
-                            <option value="campId">Camping</option>
-                        </select>
+                        <div class="mb-3">
+                            <label for="uptEveName" class="form-label">Event Name</label>
+                            <input type="text" name="name" class="form-control" id="uptEveName" placeholder="Enter Event Name" value="<%= events[0].name %>">
+                        </div>
+                        <div class="form-floating mb-3">
+                            <textarea name="description" class="form-control" id="uptEveDesc"><%= events[0].description %></textarea>
+                            <label for="uptEveDesc">Event Description</label>
+                        </div>
                     </div>
                     <div class="step-form-three">
-                        <label for="delCateChoose" class="form-label">Choose xxx</label>
-                        <select name="name" class="form-select" id="delCateChoose">
-                            <option value="eduId">Education</option>
-                            <option value="sptId">Sport</option>
-                            <option value="campId">Camping</option>
-                        </select>
+                        <div class="the-choice">
+                            <div class="choice">
+                                <input type="radio" name="imageChangeControl" id="eveImageChangeControl1" class="radioHidden" value="old" checked>
+                                <label for="eveImageChangeControl1" class="img-choice-select">
+                                    <div class="img-holder">
+                                        <img src="<%= events[0].profile_img %>" alt="Event Image" id="eveOldImageToUpt" <%= events[0]._id %>>
+                                        <input type="hidden" id="eveOldEvePicCdId" name="eveOldImage" value="<%= events[0].cloudinary_id %>">
+                                        <input type="hidden" id="eveOldImageToUptInp" name="eveOldImageProfile" value="<%= events[0].profile_img %>">
+                                    </div>
+                                </label>
+                                <h4>Keep The Suggested Image</h4>
+                            </div>
+                            <div class="choice">
+                                <input type="radio" name="imageChangeControl" id="eveImageChangeControl2" class="radioHidden" value="new">
+                                <label for="eveImageChangeControl2" class="img-choice-select">
+                                    <div>
+                                        <input type="file" name="image" class="form-control" id="uptEvePic">
+                                    </div>
+                                </label>
+                                <h4>Add New Image</h4>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="step-form-three">
+                        <div class="mb-3">
+                            <label for="uptEveChooseCate" class="form-label">Choose Category</label>
+                            <select name="categoryId" class="form-select" id="uptEveChooseCate">
+                                <% categories.forEach(function (category) { %>
+                                    <% if(category._id.toString() ==  events[0].categoryId.toString()) { %>
+                                        <option value="<%= category._id %>" selected>
+                                            <%= category.name %>
+                                        </option>
+                                    <% } else { %>
+                                        <option value="<%= category._id %>">
+                                            <%= category.name %>
+                                        </option>
+                                    <% } %>
+                                <% }); %>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="step-form-three">
+                        <div class="mb-3">
+                            <label for="uptEveLocation" class="form-label">Event Location</label>
+                            <input type="text" name="location" class="form-control" id="uptEveLocation" placeholder="Google Map Embed Link" value="<%= events[0].location %>">
+                        </div>
+                        <div class="mb-3">
+                            <label for="uptEveChooseCity" class="form-label">Choose City</label>
+                            <select name="cityId" class="form-select" id="uptEveChooseCity">
+                                <% cities.forEach(function (city) { %>
+                                    <% if(city._id.toString() ==  events[0].cityId.toString()) { %>
+                                        <option value="<%= city._id %>" selected>
+                                            <%= city.name %>
+                                        </option>
+                                    <% } else { %>
+                                        <option value="<%= city._id %>">
+                                            <%= city.name %>
+                                        </option>
+                                    <% } %>
+                                <% }); %>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="step-form-three">
+                        <div class="mb-3">
+                            <label for="uptEveStartDt" class="form-label">Event Start Date <span>(Optional)</span></label>
+                            <input type="date" name="startDate" class="form-control" id="uptEveStartDt">
+                        </div>
+                        <div class="mb-3">
+                            <label for="uptEveEndDt" class="form-label">Event End Date <span>(Optional)</span></label>
+                            <input type="date" name="endDate" class="form-control" id="uptEveEndDt">
+                        </div>
+                    </div>
+                    <div class="step-form-three">
+                        <div class="mb-3">
+                            <label for="uptEveCost" class="form-label">Event Cost <span>(Optional)</span></label>
+                            <input type="text" name="cost" class="form-control" id="uptEveCost" value="<%= events[0].cost %>">
+                        </div>
+                        <div class="mb-3">
+                            <label for="uptEveTime" class="form-label">Event Time Duration <span>(Optional - Duration in hours)</span></label>
+                            <input type="text" name="timeDuration" class="form-control" id="uptEveTime" placeholder="Enter Duration of Event in hours" value="<%= events[0].timeDuration %>">
+                        </div>
+                    </div>
+                    <div class="step-form-three">
+                        <div class="form-floating mb-3">
+                            <textarea type="text" name="contact" class="form-control" id="uptEveContact"><%= events[0].contact %></textarea>
+                            <label for="uptEveContact">Event Contacts Information<span>(Optional)</span></label>
+                        </div>
                     </div>
                     <div class="step-buttons">
                         <button type="button" id="prevBtnThree" onclick="nextPrevThree(-1)">Previous</button>
@@ -265,18 +399,20 @@
                 </form>
             </div>
             <div class="tab-pane fade delete-cate" id="delete-eve-cont" role="tabpanel" aria-labelledby="delete-eve-tab" tabindex="0">
-                <form class="step-form-holder" id="updateCateForm" action="">
+                <form class="step-form-holder" id="delEveForm" action="/admins/events/delete/<%=events[0]._id %>?_method=DELETE" method="POST">
                     <h1 class="step-form-header">Delete Event</h1>
                     <div class="step-form-showed">
-                        <label for="delCateChoose" class="form-label">Choose Category</label>
-                        <select name="name" class="form-select" id="delCateChoose">
-                            <option value="eduId">Education</option>
-                            <option value="sptId">Sport</option>
-                            <option value="campId">Camping</option>
+                        <label for="delEveChoose" class="form-label">Choose Event</label>
+                        <select name="name" class="form-select" id="delEveChoose">
+                            <% events.forEach(function (event) { %>
+                                <option value="<%= event._id %>">
+                                    <%= event.name %>
+                                </option>
+                            <% }); %>
                         </select>
                     </div>
                     <div class="step-buttons">
-                        <button type="button">Delete</button>
+                        <button type="submit">Delete</button>
                     </div>
                 </form>
             </div>
@@ -286,9 +422,18 @@
 <script src="https://code.jquery.com/jquery-3.7.0.min.js" integrity="sha256-2Pmvv0kuTBOenSvLm6bvfBSSHrUJ+3A7x6P5Ebd07/g=" crossorigin="anonymous"></script>
 <script>
     let addEveSgstChooseCate = document.getElementById("addEveSgstChooseCate");
+    let addEveSgstChooseCity = document.getElementById("addEveSgstChooseCity");
     let addEveSgstChooseCateIndex;
+    let addEveSgstChooseCityIndex;
+    let updateEveForm = document.getElementById("updateEveForm");
+    let uptEveChooseCate = document.getElementById("uptEveChooseCate");
+    let uptEveChooseCateIndex;
+    let uptEveChooseCity = document.getElementById("uptEveChooseCity");
+    let uptEveChooseCityIndex;
+    let delEveForm = document.getElementById("delEveForm");
     let theForm = document.getElementsByTagName('form')[0];
     let theFormTwo = document.getElementsByTagName('form')[1];
+    let theFormThree = document.getElementsByTagName('form')[2];
     $(document).ready(function() {
         $('#addEveChooseSgst').change(function() {
             $.ajax({
@@ -303,7 +448,65 @@
                     addEveSgstChooseCateIndex = Array.from(addEveSgstChooseCate.options).findIndex(option => option.value.toString() == data.categoryId.toString());
                     // Set the selected index to the index of the matching option
                     addEveSgstChooseCate.selectedIndex = addEveSgstChooseCateIndex;
-
+                    document.getElementById('oldEvePicSgstCdId').setAttribute('value', `${data.cloudinary_id}`);
+                    document.getElementById('newEveLocationSgst').setAttribute('value', `${data.location}`);
+                    // Find the index of the option with city Id
+                    addEveSgstChooseCityIndex = Array.from(addEveSgstChooseCity.options).findIndex(option => option.value.toString() == data.cityId.toString());
+                    // Set the selected index to the index of the matching option
+                    addEveSgstChooseCity.selectedIndex = addEveSgstChooseCityIndex;
+                    document.getElementById('newEveCostSgst').setAttribute('value', `${data.cost}`);
+                    document.getElementById('newEveTimeSgst').setAttribute('value', `${data.timeDuration}`);
+                    document.getElementById('newEveContactSgst').innerHTML = `${data.contact}`;
+                    document.getElementById('OldImageToAddSgst').setAttribute('src', `${data.profile_img}`);
+                    document.getElementById('OldImageToAddSgstInp').setAttribute('value', `${data.profile_img}`);
+                },
+                error: function() {
+                    console.log('Error!');
+                }
+            });
+        });
+        $('#uptEveChoose').change(function() {
+            $.ajax({
+                url: `/admins/events/ajaxEvent/${$(this).val()}`,
+                dataType: 'json', // specify data type
+                type: 'GET',
+                success: function(data) {
+                    console.log(data)
+                    updateEveForm.setAttribute('action', `/admins/events/update/${data._id}?_method=PUT`);
+                    updateEveForm.setAttribute('method', `POST`);
+                    updateEveForm.setAttribute('enctype', `multipart/form-data`);
+                    document.getElementById('uptEveName').setAttribute('value', `${data.name}`);
+                    document.getElementById('uptEveDesc').innerHTML = `${data.description}`;
+                    // Find the index of the option with category Id
+                    uptEveChooseCateIndex = Array.from(uptEveChooseCate.options).findIndex(option => option.value.toString() == data.categoryId.toString());
+                    // Set the selected index to the index of the matching option
+                    uptEveChooseCate.selectedIndex = uptEveChooseCateIndex;
+                    document.getElementById('eveOldEvePicCdId').setAttribute('value', `${data.cloudinary_id}`);
+                    document.getElementById('uptEveLocation').setAttribute('value', `${data.location}`);
+                    // Find the index of the option with city Id
+                    uptEveChooseCityIndex = Array.from(uptEveChooseCity.options).findIndex(option => option.value.toString() == data.cityId.toString());
+                    // Set the selected index to the index of the matching option
+                    uptEveChooseCity.selectedIndex = uptEveChooseCityIndex;
+                    document.getElementById('uptEveCost').setAttribute('value', `${data.cost}`);
+                    document.getElementById('uptEveTime').setAttribute('value', `${data.timeDuration}`);
+                    document.getElementById('uptEveContact').innerHTML = `${data.contact}`;
+                    document.getElementById('eveOldImageToUpt').setAttribute('src', `${data.profile_img}`);
+                    document.getElementById('eveOldImageToUptInp').setAttribute('value', `${data.profile_img}`);
+                },
+                error: function() {
+                    console.log('Error!');
+                }
+            });
+        });
+        $('#delEveChoose').change(function() {
+            $.ajax({
+                url: `/admins/events/ajaxEvent/${$(this).val()}`,
+                dataType: 'json', // specify data type
+                type: 'GET',
+                success: function(data) {
+                    console.log(data)
+                    delEveForm.setAttribute('action', `/admins/events/delete/${data._id}?_method=DELETE`);
+                    delEveForm.setAttribute('method', `POST`);
                 },
                 error: function() {
                     console.log('Error!');

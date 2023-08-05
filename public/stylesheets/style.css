@@ -17,7 +17,9 @@ body{
 }
 
 #smallLogo{
-  width:55px;
+  width:75px;
+  margin-top: -5px;
+  margin-right:20px;
 }
 
 ul#header {
@@ -130,7 +132,12 @@ transition: color 0.3s ease-in-out;
 
 img.placeImg{
     width:100%;
-    border-radius: 10px;
+    border-radius: 15px;
+    max-height: 60%;
+    min-height: 60%;
+    height:60%;
+    object-fit:cover;
+
 }
 
 .activitiesChild{
@@ -155,11 +162,11 @@ img.placeImg{
      margin-bottom:7%;
   }
   
-
+/* 
 img.placeImg{
   width:100%;
   border-radius: 10px;
-}
+} */
 
 .activitiesChild{
   text-align: center;
@@ -169,9 +176,26 @@ img.placeImg{
 
 }
 
+img.activitiesChild{
+  width: 100%;
+    border-radius: 15px;
+    max-height: 60%;
+    min-height: 60%;
+    height: 60%;
+    object-fit: cover;
+}
+
+.activitiesChild h2{
+  font-weight: 100;
+  text-align: center;
+  color:black;
+}
+
+
 .activitiesChild h3{
   font-weight: 100;
   text-align: center;
+  color:black;
 }
 
 
@@ -182,17 +206,14 @@ img.placeImg{
 
   --bs-btn-active-color: #fff;
   --bs-btn-active-bg: #db8f01;
-  --bs-btn-active-border: 1px solid orange;
+  /* --bs-btn-active-border: 1px solid orange; */
+  --bs-btn-active-border-color:1px solid #db8f01;
 
 }
 
 .btn-primary:hover{
   background-color: #ffc251;
   border:1px solid #db8f01 ;
-}
-
-.btn-primary:active{
-  background-color: red;
 }
 
 #aboutFelha{
@@ -230,10 +251,11 @@ margin:auto 3%;
   }
 
   .quote{
-    background-color: orange;
+    background-color: #FFA500;
     color:black;
     margin:0 1%;
 border-radius: 15px;
+padding:2%;
 }
 
 
@@ -249,6 +271,15 @@ border-radius: 15px;
 
 .btn-secondary{
   background-color: #FFF8EE;
+  border: #e9e2d9 1px solid;
+  color:black;
+  text-decoration: none;
+  width:max-content;
+}
+
+.btn-secondary:hover{
+  background-color: #FFA500;
+  border: #e9e2d9 1px solid;
   color:black;
   text-decoration: none;
   width:max-content;
@@ -306,7 +337,7 @@ main .container .categories .classfications ul li:not(:first-of-type) {
 }
 
  .container .categories .classfications ul li a {
-  color: gray;
+  color: color;
   font-weight: 600;
   text-decoration: none;
   transition: color 0.3s;
@@ -316,7 +347,9 @@ main .container .categories .classfications ul li:not(:first-of-type) {
   -o-transition: color 0.3s;
 }
  .container .categories .classfications ul li a.selected {
-  color: black;
+   color:grey;
+;
+
 }
  .container .categories .classfications ul li:hover a {
   color: black;
@@ -394,11 +427,477 @@ main .container .categories .classfications ul li:not(:first-of-type) {
   background-position: center;
   background-size:cover;
   border-radius:20px; 
-  background-repeat: no-repeat; }
+  background-repeat: no-repeat; 
+  height:400px;
+}
 
   .eapps-instagram-feed-posts-view{
     justify-content: center !important;
   }
+
+  .paragraphStyle{
+    font-size:20px;
+    font-weight: 100;
+  }
+
+  #instaTitle{
+    margin-bottom:6%;
+  }
+
+  /* EVENT DETAILS PAGE DESIGN */
+
+
+.details .head-info {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 0 0 40px;
+    padding: 20px 10px;
+    border-radius: 15px;
+    -webkit-border-radius: 15px;
+    -moz-border-radius: 15px;
+    -ms-border-radius: 15px;
+    -o-border-radius: 15px;
+}
+.details .head-info .image {
+    width: 70%;
+    max-width: 70%;
+    overflow: hidden;
+    border-radius: 15px;
+    -webkit-border-radius: 15px;
+    -moz-border-radius: 15px;
+    -ms-border-radius: 15px;
+    -o-border-radius: 15px;
+    box-shadow: 0 12px 20px 0 rgb(0 0 0 / 13%), 0 2px 4px 0 rgb(0 0 0 / 12%);
+}
+.details .head-info .image img {
+    width: 100%;
+    height: 100%;
+    text-align: center;
+    object-fit: cover;
+}
+.details .head-info .informations {
+    width: 90%;
+    padding: 0px 25px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+    gap: 10px;
+}
+.details .head-info .informations .name {
+
+}
+.details .head-info .informations .name h3 {
+    font-family: 'Signika', sans-serif;
+    font-size: 28px;
+    color: #0A0A0A;
+    letter-spacing: 0.3px;
+    font-weight: bold;
+}
+.details .head-info .informations .description {
+
+}
+.details .head-info .informations .description p {
+
+}
+.details .head-info .informations .contact-cost {
+
+}
+.details .head-info .informations .contact-cost span {
+    display: flex;
+    justify-content: flex-start;
+    gap: 10px;
+    font-weight: bold;
+}
+.details .head-info .informations .contact-cost span i {
+
+}
+.details .head-info .informations .contact-cost span span {
+    font-weight: 400;
+}
+.details .head-info .informations .contact-cost span:first-of-type {
+
+}
+.details .head-info .informations .contact-cost span:last-of-type {
+
+}
+.details .head-info .informations .dates {
+
+}
+.details .head-info .informations .dates span {
+    display: flex;
+    justify-content: flex-start;
+    gap: 10px;
+    font-weight: bold;
+}
+.details .head-info .informations .dates span i {
+
+}
+.details .head-info .informations .dates span span {
+    font-weight: 400;
+}
+.details .head-info .informations .dates span:first-of-type {
+
+}
+.details .head-info .informations .dates span.mid {
+
+}
+.details .head-info .informations .dates span:last-of-type {
+
+}
+.details .location-info {
+    margin: 0 0 40px;
+    border-radius: 15px;
+    -webkit-border-radius: 15px;
+    -moz-border-radius: 15px;
+    -ms-border-radius: 15px;
+    -o-border-radius: 15px;
+}
+.details .location-info h2 {
+    font-family: 'Signika', sans-serif;
+    font-size: 28px;
+    color: #0A0A0A;
+    letter-spacing: 0.3px;
+    font-weight: bold;
+    text-align: center;
+}
+.details .location-info .location {
+
+}
+.details .location-info .location iframe {
+    width: 100% !important;
+    height: 200px !important;
+    box-shadow: 0 12px 20px 0 rgb(0 0 0 / 13%), 0 2px 4px 0 rgb(0 0 0 / 12%);
+    border-radius: 15px;
+    -webkit-border-radius: 15px;
+    -moz-border-radius: 15px;
+    -ms-border-radius: 15px;
+    -o-border-radius: 15px;
+}
+.details .add-review {
+    padding: 20px 10px;
+    margin: 0 0 40px;
+    border-radius: 15px;
+    -webkit-border-radius: 15px;
+    -moz-border-radius: 15px;
+    -ms-border-radius: 15px;
+    -o-border-radius: 15px;
+}
+.details .add-review h2 {
+    font-family: 'Signika', sans-serif;
+    font-size: 28px;
+    color: #0A0A0A;
+    letter-spacing: 0.3px;
+    font-weight: bold;
+    text-align: center;
+}
+.details .add-review form {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+}
+.details .add-review form .rating-starz {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.details .add-review form .rating-starz span {
+    font-size: 24px;
+    font-weight: bold;
+    margin-right: 20px;
+}
+.details .add-review form .rating-starz .stars {
+    display: flex;
+    align-items: center;
+    gap: 25px;
+}
+.details .add-review form .rating-starz .stars input[type="radio"] {
+    display: none;
+}
+.details .add-review form .rating-starz .stars label {
+
+}
+.details .add-review form .rating-starz .stars label i {
+    color: #aeadad;
+    font-size: 24px;
+    cursor: pointer;
+    transition: color 0.3s ease;
+    -webkit-transition: color 0.3s ease;
+    -moz-transition: color 0.3s ease;
+    -ms-transition: color 0.3s ease;
+    -o-transition: color 0.3s ease;
+}
+.details .add-review form .rating-starz .stars label i.rated {
+    color: #ff9c1a;
+}
+.details .add-review form .txetarea-div {
+    width: 100%;
+}
+.details .add-review form button {
+    background-color: #ffa500;
+    color: #0A0A0A;
+    padding: 10px;
+    outline: none;
+    border: none;
+    transition: 0.3s;
+    -webkit-transition: 0.3s;
+    -moz-transition: 0.3s;
+    -ms-transition: 0.3s;
+    -o-transition: 0.3s;
+}
+.details .add-review form button:hover {
+    background-color: #d18800;
+}
+.details .reviews {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 30px;
+    padding: 10px;
+    border-radius: 15px;
+    width:100%;
+}
+
+.details .reviews h2 {
+    font-family: 'Signika', sans-serif;
+    font-size: 28px;
+    color: #0A0A0A;
+    letter-spacing: 0.3px;
+    font-weight: bold;
+}
+
+.details .reviews .review {
+    display: flex;
+    align-items: center;
+    padding: 20px 25px;
+    border-radius: 15px;
+    -webkit-border-radius: 15px;
+    -moz-border-radius: 15px;
+    -ms-border-radius: 15px;
+    -o-border-radius: 15px;
+    position: relative;
+    box-shadow: 0 12px 20px 0 rgb(0 0 0 / 13%), 0 2px 4px 0 rgb(0 0 0 / 12%);
+    border: 1px solid #FFF8EE;
+    width:100%;
+}
+.details .reviews .review .image {
+    width: 75px;
+    height: 75px;
+    margin: 30px 0 30px;
+    border: 1px solid black;
+    overflow: hidden;
+    box-shadow: 0 12px 20px 0 rgb(0 0 0 / 13%), 0 2px 4px 0 rgb(0 0 0 / 12%);
+    border-radius: 50%;
+    -webkit-border-radius: 50%;
+    -moz-border-radius: 50%;
+    -ms-border-radius: 50%;
+    -o-border-radius: 50%;
+}
+.details .reviews .review .image img {
+    width: 100%;
+    height: 100%;
+    text-align: center;
+    object-fit: cover;
+}
+.details .reviews .review .text {
+    padding: 15px 25px;
+}
+.details .reviews .review .text h2 {
+
+}
+.details .reviews .review .text p {
+
+}
+.details .reviews .review .control {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    position: absolute;
+    right: 5%;
+    bottom:5%;
+}
+.details .reviews .review .control button {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 5px;
+    outline: none;
+    border: none;
+    font-size: 13px;
+    border-radius: 7px;
+    -webkit-border-radius: 7px;
+    -moz-border-radius: 7px;
+    -ms-border-radius: 7px;
+    -o-border-radius: 7px;
+    transition: 0.3s;
+    -webkit-transition: 0.3s;
+    -moz-transition: 0.3s;
+    -ms-transition: 0.3s;
+    -o-transition: 0.3s;
+}
+.details .reviews .review .control button:first-of-type {
+    background-color: #ffa500;
+    color: #0A0A0A;
+    padding:5px 15px;
+}
+.details .reviews .review .control button:first-of-type i {
+    color: #0A0A0A;
+    font-size: 15px;
+}
+.details .reviews .review .control button:hover:first-of-type {
+    background-color: #d18800;
+}
+.details .reviews .review .control button:last-of-type {
+    background-color: #ec1414;
+    color: white;
+    padding: 5px 15px;
+}
+.details .reviews .review .control button:last-of-type i {
+    color: white;
+    font-size: 15px;
+}
+.details .reviews .review .control button:hover:last-of-type {
+    background-color: #b91010;
+}
+
+#eventTitleDetail{
+margin-bottom:3%;
+}
+
+.signInHolder{
+  display: flex;
+  justify-content: center;
+
+}
+
+.eapps-instagram-feed-posts-view{
+  gap:3%;
+}
+
+/* show categories page  */
+
+.categories .container {
+  padding: 100px 0;
+  display: grid;
+  grid-template-columns: repeat(auto-fill,minmax(300px,1fr));
+  gap: 40px;
+}
+.categories .container .box {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  box-shadow: 0 12px 20px 0 rgb(0 0 0 / 13%), 0 2px 4px 0 rgb(0 0 0 / 12%);
+  counter-increment: categories;
+  position: relative;
+  border-radius:15px;
+  transition: 0.3s;
+  -webkit-transition: 0.3s;
+  -moz-transition: 0.3s;
+  -ms-transition: 0.3s;
+  -o-transition: 0.3s;
+}
+.categories .container .box::before {
+  content: '';
+  left: 50%;
+  transform: translateX(-50%);
+  height: 3px;
+  bottom: -3px;
+  background-color: black;
+  position: absolute;
+  width: 0;
+  transition: 0.3s;
+  -webkit-transition: 0.3s;
+  -moz-transition: 0.3s;
+  -ms-transition: 0.3s;
+  -o-transition: 0.3s;
+}
+.categories .container .box:hover {
+  transform: translateY(-10px);
+}
+.categories .container .box:hover::before {
+  width: 90%;
+}
+.categories .container .box > i {
+  display: block;
+  margin: 30px auto 20px;
+  font-size: 40px;
+  text-align: center;
+  color: black;
+}
+.categories .container .box > h3 {
+  text-align: center;
+  font-size: 25px;
+  margin: 20px 0 40px;
+  color: black;
+}
+.categoryA {
+text-decoration: none;
+color:black;
+}
+
+.categories .container .box .info {
+  padding: 15px;
+  position: relative;
+  background-color: wheat;
+  text-align: right;
+}
+.categories .container .box .info::before{
+  content: "0" counter(categories);
+  position: absolute;
+  background-color: black;
+  color: wheat;
+  left: 0;
+  top: 0;
+  height: 100%;
+  width: 80px;
+  font-size: 30px;
+  font-weight: bold;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding-right: 15px;
+}
+.categories .container .box .info::after {
+  content: '';
+  position: absolute;
+  background-color: black;
+  top: 0;
+  left: 80px;
+  width: 50px;
+  height: 100%;
+  transform: skewX(-30deg);
+}
+.categories .container .box .info a {
+  color: brown;
+}
+
+main {
+  flex-grow: 1;
+}
+
+.eventAdd{
+  margin-top:100%;
+  margin-bottom:100%;
+}
+
+/* End categories */
+
+.h2Events{
+  color:black;
+}
+
+.h3Events{
+  color:black;
+}
+
+  
+
 
 
 

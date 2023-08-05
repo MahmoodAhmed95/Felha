@@ -36,18 +36,28 @@ async function create(req, res) {
   const category = new Category({
     name: req.body.name,
   });
-
   try {
-    await category.save();
-    res.redirect("categories");
+    const categoryName = await Category.findOne({ name: req.body.name });
+    if (categoryName) {
+      console.log("Name already exist");
+    } else {
+      await category.save();
+      res.redirect("categories");
+    }
   } catch (error) {
     res.render("error");
   }
 }
+
 async function showCategroyEvents(req, res) {
+  const categories = await Category.find({});
   const category = await Category.findById(req.params.id);
   const events = await Event.find({}).where("categoryId").equals(req.params.id);
-  res.render("events/index", { title: category.name, events: events });
+  res.render("events/index", {
+    title: category.name,
+    events: events,
+    categories,
+  });
 }
 
 async function editCategoryForm(req, res) {
@@ -82,6 +92,7 @@ async function deleteCategory(req, res) {
 
 // async function deleteCategory(req, res) {
 //   try {
+
 //     const category = await Category.findById(req.params.id);
 //     await Category.remove();
 //     res.redirect("/");

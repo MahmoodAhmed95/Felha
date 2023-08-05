@@ -1,7 +1,7 @@
-const Event = require('../models/event');
+const Event = require("../models/event");
 
 module.exports = {
-  create
+  create,
 };
 
 async function create(req, res) {
@@ -22,4 +22,20 @@ async function create(req, res) {
   res.redirect(`/`);
 }
 
+//deleting the review
 
+// async function deleteReview(req, res) {
+//   // Note the cool "dot" syntax to query on the property of a subdoc
+//   const event = await Event.findOne({
+//     "reviews._id": req.params.id,
+//     "reviews.user": req.user._id,
+//   });
+//   // Rogue user!
+//   if (!event) return res.redirect("/");
+//   // Remove the review using the remove method available on Mongoose arrays
+//   event.reviews.remove(req.params.id);
+//   // Save the updated movie doc
+//   await event.save();
+//   // Redirect back to the movie's show view
+//   res.redirect(`/events/${event._id}`);
+// }

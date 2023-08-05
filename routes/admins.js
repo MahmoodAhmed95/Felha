@@ -20,11 +20,10 @@ const adminsCtrl = require("../controllers/admins");
 // Start "Categories" Routes
 
     // Get "Categories Control" Page
-    router.get("/categories", adminsCtrl.categoryForm);
+    router.get("/categories", adminsCtrl.categoryIndex);
 
-    router.get("/categories/ajaxUpdate/:id", adminsCtrl.editCategoryAjax);
-
-    router.get("/categories/ajaxDelete/:id", adminsCtrl.deleteCategoryAjax);
+    // get categories by Ajax
+    router.get("/categories/ajaxCategory/:id", adminsCtrl.categoryAjax);
 
     //Creating category Route
     router.post("/categories", adminsCtrl.createCategory);
@@ -35,9 +34,6 @@ const adminsCtrl = require("../controllers/admins");
     //deleting the category
     router.delete("/categories/delete/:id", adminsCtrl.deleteCategory);
 
-    //New Category Route to display the form
-    // router.get("/categories/:id", adminsCtrl.showCategroyEvents);
-
 // End of "Categories" Routes
 
 // =========================================================================================
@@ -46,25 +42,19 @@ const adminsCtrl = require("../controllers/admins");
 // Start "Events" Routes
 
     //New Event Route to display the form
-    router.get("/events", adminsCtrl.indexEvents);
+    router.get("/events", adminsCtrl.eventsIndex);
 
     //Creating event Route
     router.post("/events",upload.single("image"), adminsCtrl.createEvent);
 
+    //get Suggestes by Ajax
     router.get("/events/ajaxSuggest/:id", adminsCtrl.eventSuggestAjax);
 
+    //get Events by Ajax
     router.get("/events/ajaxEvent/:id", adminsCtrl.eventAjax);
 
-    //Editting the event data -> form
-    router.get("/events/edit/:id", adminsCtrl.editEventForm);
-
     //Updating  event data -> database
-    router.put("/events/update/:id", adminsCtrl.updateEventForm);
-    // // reviews add for the reviews section
-    // router.post("/:id/reviews", adminsCtrl.create);
-
-    //Creating event Route
-    router.get("/events/:id", adminsCtrl.showOne);
+    router.put("/events/update/:id",upload.single("image"), adminsCtrl.updateEventForm);
 
     //deleting the event
     router.delete("/events/delete/:id", adminsCtrl.deleteEvent);
@@ -73,5 +63,40 @@ const adminsCtrl = require("../controllers/admins");
 
 // =========================================================================================
 // =========================================================================================
+
+// Start "Suggestions" Routes
+
+    //New Event Route to display the form
+    router.get("/suggestions", adminsCtrl.suggestionsIndex);
+
+    //New Event Route to display the form
+    router.get("/suggestions/:id", adminsCtrl.suggestionsDetails);
+
+    //New Event Route to display the form
+    router.get("/suggestions/accept/:id", adminsCtrl.suggestionAccept);
+    //New Event Route to display the form
+    router.get("/suggestions/reject/:id", adminsCtrl.suggestionReject);
+
+// End of "Suggestions" Routes
+
+// =========================================================================================
+// =========================================================================================
+
+// Start "Users" Routes
+
+    // to display users table
+    router.get("/users", adminsCtrl.usersIndex);
+
+    // to display users table
+    router.get("/users/promote/:id", adminsCtrl.userPromote);
+
+    // to display users table
+    router.get("/users/demote/:id", adminsCtrl.userDemote);
+
+    // to display users table
+    router.get("/users/block/:id", adminsCtrl.userBlock);
+
+// End of "Users" Routes
+
 
 module.exports = router;
