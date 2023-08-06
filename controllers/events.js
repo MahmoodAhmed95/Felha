@@ -68,7 +68,12 @@ async function create(req, res) {
 async function showOne(req, res) {
   const event = await Event.findById(req.params.id);
   // console.log(event);
-  res.render("events/details", { title: "event", event });
+  res.render("events/details", {
+    title: "event",
+    event,
+    errorMessages: req.flash("Error"),
+    successMessages: req.flash("success"),
+  });
 }
 
 async function editEventForm(req, res) {

@@ -1,3 +1,113 @@
-<h1><%= message %></h1>
-<h2><%= error.status %></h2>
-<pre><%= error.stack %></pre>
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <!-- logo icon -->
+    <link rel="icon" type="image/x-icon" href="/images/Felha Logo.png">
+    <!-- Bootstrap Styles -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM" crossorigin="anonymous">
+    <!-- Bootstrap Icons -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css">
+    <!-- our styles -->
+    <style>
+        .landing {
+            min-height: 100vh;
+            background-color: #1f2021;
+            background-image: url("https://i.imgur.com/FqUB3N2.jpg");
+            background-size: cover;
+            position: relative;
+        }
+
+        .landing::before {
+            content: "";
+            position: absolute;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgb(0 0 0 / 40%);
+        }
+
+        .landing .content {
+            position: absolute;
+            left: 0;
+            top: 10%;
+            padding: 50px;
+            margin-left: 20px;
+            background-color: rgb(255 255 255 / 60%);
+            color: black;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+
+        .landing .content img {
+            width: 300px;
+            text-align: center;
+            object-fit: cover;
+        }
+
+        @media (max-width: 767px) {
+            .landing .content {
+                width: 100%;
+                align-items: center;
+                margin-left: 0;
+            }
+        }
+
+        .landing .content h2 {
+            font-size: 32px;
+            font-weight: normal;
+            line-height: 1.5;
+            margin-bottom: 10px;
+        }
+
+        .landing .content p {
+            font-size: 14px;
+            margin-bottom: 10px;
+        }
+
+        .landing button {
+            background-color: black;
+            color: white;
+            padding: 10px 25px;
+            border: none;
+            text-transform: capitalize;
+            border-radius: 18px;
+            width: fit-content;
+            transition: opacity 0.3s;
+            -webkit-transition: opacity 0.3s;
+            -moz-transition: opacity 0.3s;
+            -ms-transition: opacity 0.3s;
+            -o-transition: opacity 0.3s;
+        }
+
+        .landing button a {
+            text-decoration: none;
+            color: white;
+        }
+
+        .landing button:hover {
+            opacity: 0.8;
+        }
+    </style>
+</head>
+
+<body>
+    <!-- Start Landing -->
+    <div class="landing">
+        <div class="content">
+            <img src="https://i.imgur.com/pCkHWa6.png" alt="logo">
+            <h2>You've landed in the<br>Middle of nowhere</h2>
+            <p>It's a great place to be, except in this case...</p>
+            <button><a href="/">Return to Home</a></button>
+        </div>
+    </div>
+    <!-- End Landing -->
+</body>
+
+</html>

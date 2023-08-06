@@ -16,6 +16,8 @@ async function index(req, res) {
     title: "Suggest",
     cities,
     categories,
+    errorMessages: req.flash("Error"),
+    successMessages: req.flash("success"),
   });
 }
 
@@ -54,13 +56,17 @@ async function create(req, res) {
     const eventCost = req.body.cost;
 
     if (!contactRegex.test(contact) && contact == !null) {
-      console.log("Invalid number");
+      req.flash("Error", `Invalid Contact Number!`);
+      res.redirect("/suggestions/");
     } else if (!googleMapRegex.test(googleMap)) {
-      console.log("Invalid Google Maps link");
+      req.flash("Error", `Invalid Google Maps Link`);
+      res.redirect("/suggestions/");
     } else if (!eventNameRegex.test(eventName)) {
-      console.log("Invalid Event Name");
+      req.flash("Error", `Invalid Event Name`);
+      res.redirect("/suggestions/");
     } else if (!eventCostRegex.test(eventCost) && eventCost == !null) {
-      console.log("Invalid Event Cost");
+      req.flash("Error", `Invalid Cost`);
+      res.redirect("/suggestions/");
     } else {
       // Upload image to cloudinary
       const result = await cloudinary.uploader.upload(req.file.path);
@@ -69,10 +75,11 @@ async function create(req, res) {
       req.body.user = req.user._id;
 
       await Suggestion.create(req.body);
+      req.flash("success", `Suggest Added successfully!`);
       res.redirect("/suggestions/");
     }
   } catch (error) {
-    console.log(error);
-    res.render("error", { errorMsg: error.message });
+    req.flash("Error", `Failed Suggest!`);
+    res.redirect("/suggestions/");
   }
 }

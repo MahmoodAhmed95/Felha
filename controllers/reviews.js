@@ -2,6 +2,7 @@ const Event = require("../models/event");
 
 module.exports = {
   create,
+  delete:deleteReview,
 };
 
 async function create(req, res) {
@@ -17,25 +18,31 @@ async function create(req, res) {
   try {
     await event.save();
   } catch (error) {
-    console.log(error);
+    req.flash("Error", `Failed to Add Review!`);
+    res.redirect(`/events/${event._id}`);
   }
-  res.redirect(`/`);
+  req.flash("success", `Review Added successfully!`);
+  res.redirect(`/events/${event._id}`);
 }
 
 //deleting the review
 
-// async function deleteReview(req, res) {
-//   // Note the cool "dot" syntax to query on the property of a subdoc
-//   const event = await Event.findOne({
-//     "reviews._id": req.params.id,
-//     "reviews.user": req.user._id,
-//   });
-//   // Rogue user!
-//   if (!event) return res.redirect("/");
-//   // Remove the review using the remove method available on Mongoose arrays
-//   event.reviews.remove(req.params.id);
-//   // Save the updated movie doc
-//   await event.save();
-//   // Redirect back to the movie's show view
-//   res.redirect(`/events/${event._id}`);
-// }
+async function deleteReview(req, res) {
+  // Note the cool "dot" syntax to query on the property of a subdoc
+  const event = await Event.findOne({
+    "reviews._id": req.params.id,
+    "reviews.user": req.body.reviewUser,
+  });
+  // Rogue user!
+  if (!event){
+      req.flash("Error", `Failed to Delete Review!`);
+      return res.redirect(`/events/${event._id}`);
+  }
+  // Remove the review using the remove method available on Mongoose arrays
+  event.reviews.remove(req.params.id);
+  // Save the updated movie doc
+  await event.save();
+  // Redirect back to the movie's show view
+  req.flash("success", `Review deleted successfully!`);
+  res.redirect(`/events/${event._id}`);
+}

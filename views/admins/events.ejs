@@ -517,6 +517,15 @@
 </script>
 <%- include('../partials/adminPartials/footer.ejs') %>
 <% } else { %>
-    <h1 style="color: red;font-weight: bold;text-align: center;">سوو لوقن أول دبحتونا</h1>
-    <h2 style="color: black;font-weight: bold;text-align: center;"><a href="/auth/google" class="login">عصو هني</a></h1>
+
+    <div class="adminBasicContainer">
+
+        <h1 class="titleOne">Welcome Admin</h1>
+        
+        
+        <a href="/auth/google" class="login">
+            <button type="button" class="btn btn-primary">Login</button>
+          </a>
+        
+        </div>
 <% }  %>

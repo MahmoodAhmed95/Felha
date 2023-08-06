@@ -1,6 +1,22 @@
 <% if(user){ %>
 <%- include('../partials/navbar.ejs') %>
     <h1 class="titleOne">Wanna Suggest an Event?</h1>
+    <% if (successMessages && successMessages.length > 0) { %>
+        <div class="alert alert-success alert-dismissible fade show w-75 my-3 m-auto" role="alert">
+            <% for (let message of successMessages) { %>
+                <p><%= message %></p>
+            <% } %>
+            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+        </div>
+    <% } %>
+    <% if (errorMessages && errorMessages.length > 0) { %>
+        <div class="alert alert-danger alert-dismissible fade show w-75 my-3 m-auto" role="alert" >
+            <% for (let message of errorMessages) { %>
+                <p><%= message %></p>
+            <% } %>
+            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+        </div>
+    <% } %>
     <form action="/suggestions/create" id="suggestionForm" method="POST" enctype="multipart/form-data">
         <div class="step-form">
             <div class="mb-3">

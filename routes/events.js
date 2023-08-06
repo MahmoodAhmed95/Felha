@@ -23,7 +23,7 @@ router.get("/", eventsCtrl.index);
 router.post("/:id/reviews", reviewsCtrl.create);
 //
 // router.get("/:id", eventsCtrl.showCategoryButton);
-
+router.delete("/:id/deletereview", reviewsCtrl.delete);
 //Creating event Route
 router.get("/:id", eventsCtrl.showOne);
 
