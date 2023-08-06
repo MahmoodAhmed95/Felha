@@ -3,6 +3,7 @@
 # Felha
 
 **_Felha_**
+
 is a website that helps people in Bahrain to find Events and Activities to do and places to go, such as beachs, education, cinemas, restaurants, museums, adventure activities and alot of different activities. It aims to provide users with a comprehensive platform to discover and explore various entertainment options in Bahrain.Features- Browse and search for restaurants, adventure activities, and other fun things to do in Bahrain.
 
 - View detailed information about each activity, including descriptions, photos, contact details, and user reviews.
@@ -10,7 +11,8 @@ is a website that helps people in Bahrain to find Events and Activities to do an
 - Leave reviews and ratings for the places you've visited to share your experiences with the community.
 - Login and create a user profile to personalize your experience and receive personalized recommendations.
 - Get directions and navigate to your chosen destination using integrated maps.
-  **Technologies Used**
+
+**Technologies Used**
 
 1. Frontend: HTML, CSS, JavaScript
 2. Backend: Node.js, Express.js
@@ -19,9 +21,10 @@ is a website that helps people in Bahrain to find Events and Activities to do an
 5. Authentication: Google and JSON Web Tokens (JWT)
 6. Deployment: GitHub and Cyclic
 
-- **Responsive mobile design**
-  The website is designed to be responsive to different screen sizes using Botstrap Frame work.
-- **Functionalities**
+**Responsive mobile design**
+The website is designed to be responsive to different screen sizes using Botstrap Frame work.
+**Functionalities**
+
 - Any User who enters the website can view the events and finds the events without the need to login.
 - Users can find events more easeier either by selecting the city of the events or by choosing the category of the events.
 - A list of available categories can be viewed to the user , they can click on the categories depending on their mode.
@@ -40,25 +43,27 @@ is a website that helps people in Bahrain to find Events and Activities to do an
 - From user control, Admin can promote any user to be a an admin and block any user in the website.
 - The website is connected with instagram were any post is added will be displayed in the website .
 - The user can visit the website either by visiting the instagram and entering by the link in the bio or by scanning the Qrcode.
-- **User Story**
+  **User Story**
 - Ali on a hot sunny day was in a bad mood , he decided to go out but still he dont have any choices to visit , he entered Felha website and he has choosen sport from the categories and then he went to watch the final basketball match.
 - Mohammed has gone to an event with his friends , were they enjoyed so He decided to visit felha website , and suggest that events in the website in order to be tried by others.
 - Mahmood , an admin in the website has seen a review comments were the user uses bad words in his reviews ,so he decided to block the user.
 - Noor has found a new event related to fashion , as an admin she straight away added the event to the website.
-- **Successful and Error Alert**
+  **Successful and Error Alert**
 - Any successful create ,update and delete a green message will be shown to inform users that the job done successfully.
 - If any invalid inputs is entered a red message will be displayed with the error description.
-- **Wire Frame**
-  ![Alt text](1.png)
-  ![Alt text](2.png)
-  ![Alt text](3.png)
-  ![Alt text](4.png)
-  ![Alt text](5.png)
-  ![Alt text](6.png)
-  ![Alt text](7.png)
-  ![Alt text](8.png)
-- **Authors**
-  Ali Abadi
-  Noor Sharaf
-  Natheer Hassan
-  Mahmood Ahmed
+  **Wire Frame**
+
+![Alt text](1.png)
+![Alt text](2.png)
+![Alt text](3.png)
+![Alt text](4.png)
+![Alt text](5.png)
+![Alt text](6.png)
+![Alt text](7.png)
+![Alt text](8.png)
+**Authors**
+
+- Ali Abadi
+- Noor Sharaf
+- Natheer Hassan
+- Mahmood Ahmed
