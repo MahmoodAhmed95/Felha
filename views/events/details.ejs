@@ -1,5 +1,8 @@
 <%- include('../partials/navbar.ejs') %>
-
+<% let total = 0,average = 0 %>
+<% event.reviews.forEach(function(the) { %>
+  <% total+=the.rating %>
+<% }); %>
   <body>
     <h1 class="titleOne" id="eventTitleDetail">
       <%=`${event.name}`%> Details
@@ -8,7 +11,7 @@
       <div class="container">
         <div class="head-info">
           <div class="image">
-            <img src="<%= event.profile_img %>" alt="">
+            <img src="<%= event.profile_img %>" alt="Event Image">
           </div>
           <div class="informations">
             <div class="name">
@@ -35,10 +38,50 @@
                 </span></span>
               <span class="mid"><i class="bi bi-calendar4-week"></i>End Date: <span>
                   <%=`${event.endDate}`%>
-                </span></span>
+              </span></span>
+              <span class="mid"><i class="bi bi-car"></i>Event Rating: <span>
+                <% average = approximateToNearest(total); %>
+                <div class="starsRatingAverage">
+                  <% if (average == 1) { %>
+                    <i class="bi bi-star-fill rated"></i>
+                    <i class="bi bi-star-fill"></i>
+                    <i class="bi bi-star-fill"></i>
+                    <i class="bi bi-star-fill"></i>
+                    <i class="bi bi-star-fill"></i>
+                  <% } else if (average == 2) { %>
+                    <i class="bi bi-star-fill rated"></i>
+                    <i class="bi bi-star-fill rated"></i>
+                    <i class="bi bi-star-fill"></i>
+                    <i class="bi bi-star-fill"></i>
+                    <i class="bi bi-star-fill"></i>
+                  <% } else if (average == 3) { %>
+                    <i class="bi bi-star-fill rated"></i>
+                    <i class="bi bi-star-fill rated"></i>
+                    <i class="bi bi-star-fill rated"></i>
+                    <i class="bi bi-star-fill"></i>
+                    <i class="bi bi-star-fill"></i>
+                  <% } else if (average == 4) { %>
+                    <i class="bi bi-star-fill rated"></i>
+                    <i class="bi bi-star-fill rated"></i>
+                    <i class="bi bi-star-fill rated"></i>
+                    <i class="bi bi-star-fill rated"></i>
+                    <i class="bi bi-star-fill"></i>
+                  <% } else if (average == 5) { %>
+                    <i class="bi bi-star-fill rated"></i>
+                    <i class="bi bi-star-fill rated"></i>
+                    <i class="bi bi-star-fill rated"></i>
+                    <i class="bi bi-star-fill rated"></i>
+                    <i class="bi bi-star-fill rated"></i>
+                  <% } else if (!average) { %>
+                    <p style="margin: 3px 0;">
+                      Not Rated Yet &#128517;
+                    </p>
+                  <% } %>
+                </div>
+              </span></span>
               <span><i class="bi bi-hourglass-split"></i>Time Duration: <span>
                   <%=`${event.timeDuration}`%>
-                </span> Hours</span>
+              </span> Hours</span>
             </div>
           </div>
         </div>
@@ -48,13 +91,8 @@
           </div>
         </div>
         <div class="add-review">
-
-
           <h2>Add a Review</h2>
-
-
           <% if (user) { %>
-
             <form action="/events/<%= event._id %>/reviews" method="POST">
               <div class="rating-starz mb-3">
                 <span>Rating:</span>
@@ -76,31 +114,15 @@
                 <label for="newEveDesc">How was your Experience?</label>
               </div>
               <input type="submit" class="btn btn-primary" value="Add Review">
-
               <% } else { %>
-
                 <div class="signInHolder">
                   <a href="/auth/google">
                     <button type="button" id="signIntoReview" class="btn btn-primary">Login to Add Review!</button>
-
                   </a>
                 </div>
-
-
-
-
             </form>
             <% } %>
-
-
         </div>
-
-
-
-
-
-
-
         <div class="reviews">
           <% event.reviews.forEach(function(r) { %>
 
@@ -122,11 +144,44 @@
 
 
                 <!-- STYLE THE DATE -->
-                <%= r.createdAt.toLocaleDateString() %>
+                <p>
+                  <%= r.createdAt.toLocaleDateString() %>
+                </p>
 
                   <!-- STYLE THE rating -->
-
-                  <%= r.rating%>
+                <div class="starsRating">
+                  <% if (r.rating == 1) { %>
+                    <i class="bi bi-star-fill rated"></i>
+                    <i class="bi bi-star-fill"></i>
+                    <i class="bi bi-star-fill"></i>
+                    <i class="bi bi-star-fill"></i>
+                    <i class="bi bi-star-fill"></i>
+                  <% } else if (r.rating == 2) { %>
+                    <i class="bi bi-star-fill rated"></i>
+                    <i class="bi bi-star-fill rated"></i>
+                    <i class="bi bi-star-fill"></i>
+                    <i class="bi bi-star-fill"></i>
+                    <i class="bi bi-star-fill"></i>
+                  <% } else if (r.rating == 3) { %>
+                    <i class="bi bi-star-fill rated"></i>
+                    <i class="bi bi-star-fill rated"></i>
+                    <i class="bi bi-star-fill rated"></i>
+                    <i class="bi bi-star-fill"></i>
+                    <i class="bi bi-star-fill"></i>
+                  <% } else if (r.rating == 4) { %>
+                    <i class="bi bi-star-fill rated"></i>
+                    <i class="bi bi-star-fill rated"></i>
+                    <i class="bi bi-star-fill rated"></i>
+                    <i class="bi bi-star-fill rated"></i>
+                    <i class="bi bi-star-fill"></i>
+                  <% } else if (r.rating == 5) { %>
+                    <i class="bi bi-star-fill rated"></i>
+                    <i class="bi bi-star-fill rated"></i>
+                    <i class="bi bi-star-fill rated"></i>
+                    <i class="bi bi-star-fill rated"></i>
+                    <i class="bi bi-star-fill rated"></i>
+                  <% }%>
+                </div>
 
 
               </div>
@@ -151,7 +206,22 @@
       integrity="sha384-geWF76RCwLtnZ8qwWowPQNguL3RmwHVBC9FhGdlKrxdiJJigb/j/68SIy3Te4Bkz"
       crossorigin="anonymous"></script>
     <!-- our scripts -->
-    <script src="js/starz.js"></script>
+    <script>
+      // Select all elements with the "i" tag and store them in a NodeList called "stars"
+      const stars = document.querySelectorAll(".stars i");
+      // Loop through the "stars"
+      stars.forEach((star, index1) => {
+          // Add an event listener that runs a function when the "click" event is triggered
+          star.addEventListener("click", () => {
+              // Loop through the "stars" NodeList Again
+              stars.forEach((star, index2) => {
+                  // Add the "active" class to the clicked star and any stars with a lower index
+                  // and remove the "active" class from any stars with a higher index
+                  index1 >= index2 ? star.classList.add("rated") : star.classList.remove("rated");
+              });
+          });
+      });
+    </script>
 
 
 
@@ -179,33 +249,32 @@
 
 
 
-                  <% let total=0 %> 
-                    <% event.reviews.forEach(function(r) { %>
-                      <% total +=r.rating %> 
+                  <% //let total=0 %> 
+                    <% //event.reviews.forEach(function(r) { %>
+                      <%// total +=r.rating %> 
 
                         <tr>
-                          <td class="review-user"><img alt="avatar" src="<%= r.userAvatar %>"
+                          <td class="review-user"><img alt="avatar" src="<%=// r.userAvatar %>"
                               referrerpolicy="no-referrer">
-                            <%= r.userName %>
+                            <%= //r.userName %>
                           </td>
                           <td>
-                            <%= r.createdAt.toLocaleDateString() %>
+                            <%=// r.createdAt.toLocaleDateString() %>
                           </td>
                           <td>
-                            <%= r.content %>
+                            <%=// r.content %>
                           </td>
                           <td>
-                            <%= r.rating%>
+                            <%=// r.rating%>
                           </td>
                         </tr>
-                        <% }); %>
+                        <% //}); %>
                           <tr>
                             <td colspan="3"></td> 
 
 
                          <td><strong>
-                                <%= (total / event.reviews.length).toFixed(1)=="NaN" ? "" :(total /
-                                  event.reviews.length).toFixed(1) %>
+                                <%= //(total / event.reviews.length).toFixed(1)=="NaN" ? "" :(total /event.reviews.length).toFixed(1) %>
                               </strong></td> 
                           </tr>
                 </tbody> -->
@@ -213,7 +282,17 @@
 
     </table>
 
-
+<% 
+function approximateToNearest(number) {
+  if (number >= 0) {
+    number = (number / event.reviews.length).toFixed(1);
+    return Math.round(number);
+  } else {
+    number = (number / event.reviews.length).toFixed(1);
+    return Math.floor(number);
+  }
+}
+%>
 
 
 

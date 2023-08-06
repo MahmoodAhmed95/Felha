@@ -1,10 +1,11 @@
 <%- include('partials/navbar.ejs') %>
 
 
-
-
+<!-- first part of the homepage -->
   <div id="aboveTheFold">
     <h1 class="titleOne">Can't Decide Where you wanna go?</h1>
+
+    <!-- the selector -->
     <div class="mb-3">
       <select id="city" name="cityId" class="form-select">
         <% cities.forEach(function (city) { %>
@@ -15,12 +16,16 @@
       </select>
     </div>
 
-    <div class="grid text-center gridGap" id="eventsId">
 
+    <!-- the cities display -->
+    
+    <div class="allContainer" id="eventsId"> <% events.forEach(function(eve) { %>
       <!-- for each to display only the selected city from the drag drop -->
-      <% events.forEach(function(eve) { %>
-        <a href="/events/<%= eve._id %>" class="eventTitle g-col-3 activitiesChild">
-          <div class="g-col-3 activitiesChild">
+     
+     
+        <div class="kid">
+        <a href="/events/<%= eve._id %>" >
+          <div class="activitiesChild">
             <img src="<%=eve.profile_img%>" class="placeImg">
             <h2 class="h2Events">
               <%= eve.name %>
@@ -30,47 +35,34 @@
             </h3>
           </div>
         </a>
-        <% }); %>
+      </div> <% }); %>
 
     </div>
-
   </div>
+
+
+  <!-- three sections part -->
   <h1 class="titleOne" id="activityTitle">Find your Favorite Activity!</h1>
-
-
-
   <div class="grid text-center" id="activitySection">
-
-
-
-
     <div class="g-col-12 threeRows">
       <h1>Choose Your Category</h1>
       <script src="https://cdn.lordicon.com/bhenfmcm.js"></script>
       <lord-icon src="https://cdn.lordicon.com/frjgvxce.json" trigger="loop" delay="3000" colors="primary:#FFA500"
-        state="intro" style="width:150px;height:150px;float:right; margin-top:-3%">
+        state="intro">
       </lord-icon>
       <h4 class="paragraphStyle">Explore any category, whether it's sports, education, entertainment, or anything else
         that captivates your interest, and immerse yourself in a world of enjoyment.</h4>
       <a href="/categories">
-
         <button type="button" class="btn btn-primary">Categories</button>
       </a>
-
     </div>
-
-
     <div class="g-col-12 threeRows">
       <h1>Select Your Event</h1>
 
       <script src="https://cdn.lordicon.com/bhenfmcm.js"></script>
       <lord-icon src="https://cdn.lordicon.com/fcrbbplx.json" trigger="loop" delay="3000" colors="primary:#FFA500"
-        state="intro" style="width:150px;height:150px;float:right; margin-top:-3%">
+        state="intro">
       </lord-icon>
-
-
-
-
 
       <h4 class="paragraphStyle">Discover all Bahrain events taking place throughout the region and delve into the
         details of each one, including time and location. </h4>
@@ -83,7 +75,7 @@
       <h1>Suggest an Activity</h1>
       <script src="https://cdn.lordicon.com/bhenfmcm.js"></script>
       <lord-icon src="https://cdn.lordicon.com/mrdiiocb.json" trigger="loop" delay="3000" colors="primary:#FFA500"
-        state="intro" style="width:150px;height:150px;float:right; margin-top:-3%" class="animatedIcons">
+        state="intro" class="animatedIcons">
       </lord-icon>
       <h4 class="paragraphStyle">Do you have an activity in mind that is not yet featured on our website? Share your
         suggestion with us by submitting the form on our Suggest page, and we'll be thrilled to consider your
@@ -98,10 +90,8 @@
 
 
 
+  <!-- about felha part -->
   <div class="grid text-center">
-
-
-
     <div class="g-col-12" id="aboutFelha">
 
       <h1>About Felha</h1>
@@ -113,14 +103,11 @@
         most of your precious time.
 
       </h4>
-
     </div>
-
-
   </div>
 
 
-
+<!-- instagram section -->
   <h1 class="titleOne" id="instaTitle"> Follow us On Instagram</h1>
   <script src="https://static.elfsight.com/platform/platform.js" data-use-service-core defer></script>
   <div class="elfsight-app-632791c6-32db-4f1f-97ea-421b695768be"></div>
@@ -132,8 +119,6 @@
 
 
   <!-- new code for event sort by city -->
-
-
   <script src="https://code.jquery.com/jquery-3.7.0.min.js"
     integrity="sha256-2Pmvv0kuTBOenSvLm6bvfBSSHrUJ+3A7x6P5Ebd07/g=" crossorigin="anonymous"></script>
   <script>
@@ -174,4 +159,5 @@
       });
     });
   </script>
+
   <%- include('partials/footer.ejs') %>

@@ -1,5 +1,5 @@
 <%- include('../partials/navbar.ejs') %>
-
+<% let total = 0,average = 0, eventLength =0 %>
 
     <div class="container">
         <div class="categories">
@@ -24,10 +24,51 @@
         <div class="events">
 
             <% events.forEach(function(eve) { %>
-                <a href="/events/<%= eve._id %>" style="background-image:url(<%=eve.profile_img%>);" class="eventTitle">
+                <a href="/events/<%= eve._id %>" style="background-image:url(<%=eve.profile_img%>);" class="eventTitle eventStyle">
                     <div class="event">
                         <div class="content">
-                            <span class="stars">★★★★★</span>
+                            <span class="stars">
+                                <% eve.reviews.forEach(function(the) { %>
+                                    <% total+=the.rating %>
+                                  <% }); %>
+                                  <% eventLength = eve.reviews.length; %>
+                                <% average = approximateToNearest(total, eventLength); %>
+                                  <% if (average == 1) { %>
+                                    <i class="bi bi-star-fill rated"></i>
+                                    <i class="bi bi-star-fill"></i>
+                                    <i class="bi bi-star-fill"></i>
+                                    <i class="bi bi-star-fill"></i>
+                                    <i class="bi bi-star-fill"></i>
+                                  <% } else if (average == 2) { %>
+                                    <i class="bi bi-star-fill rated"></i>
+                                    <i class="bi bi-star-fill rated"></i>
+                                    <i class="bi bi-star-fill"></i>
+                                    <i class="bi bi-star-fill"></i>
+                                    <i class="bi bi-star-fill"></i>
+                                  <% } else if (average == 3) { %>
+                                    <i class="bi bi-star-fill rated"></i>
+                                    <i class="bi bi-star-fill rated"></i>
+                                    <i class="bi bi-star-fill rated"></i>
+                                    <i class="bi bi-star-fill"></i>
+                                    <i class="bi bi-star-fill"></i>
+                                  <% } else if (average == 4) { %>
+                                    <i class="bi bi-star-fill rated"></i>
+                                    <i class="bi bi-star-fill rated"></i>
+                                    <i class="bi bi-star-fill rated"></i>
+                                    <i class="bi bi-star-fill rated"></i>
+                                    <i class="bi bi-star-fill"></i>
+                                  <% } else if (average == 5) { %>
+                                    <i class="bi bi-star-fill rated"></i>
+                                    <i class="bi bi-star-fill rated"></i>
+                                    <i class="bi bi-star-fill rated"></i>
+                                    <i class="bi bi-star-fill rated"></i>
+                                    <i class="bi bi-star-fill rated"></i>
+                                  <% } else if (!average) { %>
+                                    <p style="color: white;background-color: rgba(0, 0, 0, 0.6); padding: 2px 5px;border-radius: 7px;">
+                                      Not Rated Yet &#128517;
+                                    </p>
+                                  <% } %>
+                            </span>
 
                             <h2>
                                 <%= eve.name %>
@@ -48,6 +89,21 @@
     </div>
 
 
+    <% 
+    function approximateToNearest(number,event) {
+        if(event != 0){
+      if (number >= 0) {
+        number = (number / event).toFixed(1);
+        return Math.round(number);
+      } else {
+        number = (number / event).toFixed(1);
+        return Math.floor(number);
+      }
+    } else {
+        return NaN;
+    }
+    }
+    %>
     <!-- <a href="/events/new">Add new Event</a> THIS SHOULD BE IN THE ADMIN CONTROLLER link to add new event then change it -->
 
     <%- include('../partials/footer.ejs') %>

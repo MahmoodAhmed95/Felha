@@ -2,10 +2,121 @@
 @import url('https://fonts.googleapis.com/css2?family=Signika:wght@300;400&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Roboto&display=swap');
 
+
+
+
+/*   Start navigation bar   */
+
+nav {
+  height: 80px;
+  background-color: #FFA500;
+    border-radius: 15px;
+
+}
+
+.logo {
+  padding: 10px;
+  width: auto;
+  float: left;
+}
+.logo img {
+  height: 35px;
+}
+.list-item {
+  float: left;
+  margin-right: 25px;
+  margin-top: 17px;
+    list-style-type: none;
+
+}
+.list-item li {
+  float: left;
+  padding: 13px 13px;
+  font-size: 25px;
+  border-radius: 3px;
+  transition: all .7s ease-in-out;
+  text-align:left;
+
+
+  
+}
+.list-item li a {
+  color: black;
+    text-decoration: none;
+    transition: color 0.3s ease-in-out;
+
+
+}
+.list-item li a:hover {
+    color:white;
+}
+
+.icon {
+  display: none;
+}
+.toggle {
+  float: right;
+  margin: 20px;
+  color: black;
+  font-size: 30px;
+  border: 1px solid black;
+  padding: 0px 5px;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+
+@media (max-width: 1309px) {
+  .icon {
+    display: block;
+    width: 100%;
+    height: 80px;
+    background-color: #FFA500;
+    border-radius: 15px;
+
+  }
+  .list-item {
+    width: 100%;
+    margin: 0;
+    padding: 0;
+    position: relative;
+    top: -4px;
+    background-color: #FFA500;
+    display: none;
+    border-radius: 15px;
+
+  }
+  .list-item li {
+    text-align: center;
+    display: block;
+    float: none;
+    padding:20px;
+  }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 html body{
   margin:0;
   padding:0;
   }
+
+  a{
+    text-decoration: none;
+  }
+
+  
 
 nav{
 margin:15px;
@@ -16,11 +127,11 @@ body{
     font-family: 'Signika', sans-serif;
 }
 
-#smallLogo{
+/* #smallLogo{
   width:75px;
   margin-top: -5px;
   margin-right:20px;
-}
+} */
 
 ul#header {
   list-style-type: none;
@@ -110,32 +221,44 @@ transition: color 0.3s ease-in-out;
     text-align: center;
     margin-top:5%;
 }
-
+ 
 #city{
     width:20%;
     height:40px;
     border:1px solid #FFA500;
     border-radius: 5px;
     text-align: center;
-    margin: 3% auto;
+    margin: 2% auto;
     display: block;
     font-family: 'Signika', sans-serif;
     font-size:20px;
-
+}
+@media only screen and (max-width: 767px){
+  #city {
+    width: 300px;
+  }
+}
+@media only screen and (max-width: 575px){
+  #city {
+    width: 200px;
+  }
 }
 
 #aboveTheFold{
   margin: 0 10px;
   margin-bottom:5%;
+  
 }
 
 
 img.placeImg{
     width:100%;
-    border-radius: 15px;
+    border-radius: 13px 13px 0px 0px;
+    /* border-radius: 13px ; */
     max-height: 60%;
     min-height: 60%;
-    height:60%;
+    height:300px;
+   
     object-fit:cover;
 
 }
@@ -186,14 +309,22 @@ img.activitiesChild{
 }
 
 .activitiesChild h2{
-  font-weight: 100;
+  margin-top:revert;
+  font-weight:500;
+  font-size: 25px;
+  max-height: max-content;
   text-align: center;
   color:black;
+  min-height:20%;
+  max-height: 20%;
+  text-decoration: none;
 }
 
 
 .activitiesChild h3{
-  font-weight: 100;
+
+  font-weight:100;
+  font-size:25px;
   text-align: center;
   color:black;
 }
@@ -308,7 +439,7 @@ list-style-type: none;
 
 .classfications li {
   display: inline-block;
-  margin: 0 0.3%;
+  margin: 0.5% 0.3%;
 }
 
 
@@ -396,11 +527,14 @@ main .container .categories .classfications ul li:not(:first-of-type) {
   padding: 10px;
 }
  .container .events .event .content .stars{
-  color: gold;
-  font-size: 20px;
+  color: #aeadad;
+  font-size: 15px;
   position: absolute;
   top: 10px;
   right: 10px;
+}
+.container .events .event .content .stars .rated {
+  color: gold;
 }
  .container .events .event .content a{
   color: white;
@@ -431,6 +565,17 @@ main .container .categories .classfications ul li:not(:first-of-type) {
   height:400px;
 }
 
+.eventTitle.eventStyle{
+  color:white;
+  text-decoration: none;
+  display: relative;
+  background-position: center;
+  background-size:cover;
+  border-radius:20px; 
+  background-repeat: no-repeat; 
+  height:300px;
+}
+
   .eapps-instagram-feed-posts-view{
     justify-content: center !important;
   }
@@ -446,7 +591,9 @@ main .container .categories .classfications ul li:not(:first-of-type) {
 
   /* EVENT DETAILS PAGE DESIGN */
 
-
+.details {
+  padding-bottom: 50px;
+}
 .details .head-info {
     display: flex;
     justify-content: center;
@@ -462,6 +609,7 @@ main .container .categories .classfications ul li:not(:first-of-type) {
 .details .head-info .image {
     width: 70%;
     max-width: 70%;
+    height: 400px;
     overflow: hidden;
     border-radius: 15px;
     -webkit-border-radius: 15px;
@@ -575,6 +723,7 @@ main .container .categories .classfications ul li:not(:first-of-type) {
     -ms-border-radius: 15px;
     -o-border-radius: 15px;
 }
+
 .details .add-review {
     padding: 20px 10px;
     margin: 0 0 40px;
@@ -631,6 +780,7 @@ main .container .categories .classfications ul li:not(:first-of-type) {
     -ms-transition: color 0.3s ease;
     -o-transition: color 0.3s ease;
 }
+
 .details .add-review form .rating-starz .stars label i.rated {
     color: #ff9c1a;
 }
@@ -766,6 +916,12 @@ main .container .categories .classfications ul li:not(:first-of-type) {
     background-color: #b91010;
 }
 
+@media only screen and (max-width: 767px){
+  .details .head-info {
+    flex-direction: column;
+    gap: 30px;
+  }
+}
 #eventTitleDetail{
 margin-bottom:3%;
 }
@@ -890,13 +1046,52 @@ main {
 
 .h2Events{
   color:black;
+  font-weight: bolder;
 }
 
 .h3Events{
   color:black;
 }
 
-  
+.allContainer{
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 30px;
+  margin-bottom:3%;
+}
+lord-icon {
+  width:150px;
+  height:150px;
+  float:right; 
+  margin-top:-3%
+}
+@media only screen and (max-width: 575px){
+  lord-icon {
+    float: none; 
+    margin: 0 auto;
+    display: block;
+  }
+  lord-icon ~ a {
+    display: block;
+    text-align: center;
+  }
+}
+.starsRatingAverage {
+
+}
+.starsRating {
+  position: absolute;
+    top: 15px;
+    right: 20px;
+}
+.starsRating i,
+.starsRatingAverage i {
+  color: #aeadad;
+}
+.starsRating i.rated,
+.starsRatingAverage i.rated {
+  color: gold;
+}
 
 
 

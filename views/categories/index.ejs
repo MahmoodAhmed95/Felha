@@ -10,21 +10,17 @@
 
                     <div>
                         <a href="/categories/<%= category._id %>">
-
-                        </a>
-                        <div class="box">
-                            <i class="bi bi-mortarboard-fill"></i>
-                            <h3> <a href="/categories/<%= category._id %>" class="categoryA">
+                            <div class="box">
+                                <i class="bi bi-mortarboard-fill"></i>
+                                <h3 class="categoryA">
                                     <%= category.name %>
-                                </a></h3>
-                        </div>
+                                </h3>
+                            </div>
                         </a>
                     </div>
                     <% }) %>
             </div>
-        </div>
-        <!-- End categories -->
+            <!-- End categories -->
     </main>
-
 
     <%- include('../partials/footer.ejs') %>

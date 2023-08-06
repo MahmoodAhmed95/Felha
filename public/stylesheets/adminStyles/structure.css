@@ -149,4 +149,12 @@ main {
         display: list-item;
     }
 }
+@media only screen and (max-width: 367px){
+    .admin-nav ul li {
+        width: 100%;
+    }
+    .admin-nav ul li .nav-btn {
+        width: 100%;
+    }
+}
 /* End Of admin-nav Styling */

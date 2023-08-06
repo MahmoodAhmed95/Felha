@@ -269,12 +269,14 @@ async function updateEventForm(req, res) {
         req.body.profile_img = result.secure_url;
         req.body.cloudinary_id = result.public_id;
       }
+      console.log(req.body);
       event.name = req.body.name;
       (event.description = req.body.description),
         (event.location = req.body.location),
         (event.picture = req.body.picture),
         (event.contact = req.body.contact),
         (event.cost = req.body.cost),
+        (event.categoryId = req.body.categoryId),
         (event.cityId = req.body.cityId),
         (event.startDate = req.body.startDate),
         (event.endDate = req.body.endDate),

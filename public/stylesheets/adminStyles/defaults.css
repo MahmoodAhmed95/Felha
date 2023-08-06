@@ -158,6 +158,11 @@ select {
     gap: 40px;
     width: 100%;
 }
+@media only screen and (max-width: 767px){
+    .custom-tabs {
+        flex-direction: column;
+    }
+}
 .custom-tabs .tabs-header {
     font-size: 24px;
 }
@@ -468,6 +473,12 @@ input[type=radio].radioHidden:checked + label div input {
     -webkit-filter: none;
 }
 /* End of the Choice */
+.buttons-Accept-reject {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 20px;
+}
 @media only screen and (max-width: 1199px){}
 @media only screen and (max-width: 991px){}
 @media only screen and (max-width: 767px){}
